@@ -215,7 +215,7 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 
 	$guest_count = max(0, $adults) + max(0, $children);
 	$property_address = logestay_email_property_address($listing_id, $city_id);
-	$host_phone = trim((string) ($settings['logestay_contact_phone'] ?? ''));
+	$host_phone = '+33 1 42 86 83 26';
 
 	$vars = [
 		'booking_id' => $booking_id,
