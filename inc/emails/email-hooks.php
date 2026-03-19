@@ -1,6 +1,105 @@
 <?php
 if ( ! defined('ABSPATH') ) exit;
 
+function logestay_email_guest_first_name(string $full_name): string {
+	$full_name = trim(wp_strip_all_tags($full_name));
+	if ($full_name === '') {
+		return '';
+	}
+
+	$parts = preg_split('/\s+/', $full_name);
+	return (string) ($parts[0] ?? $full_name);
+}
+
+function logestay_email_format_date(string $date): string {
+	$date = trim($date);
+	if ($date === '') {
+		return '';
+	}
+
+	$timestamp = strtotime($date);
+	if (!$timestamp) {
+		return $date;
+	}
+
+	return wp_date('d/m/Y', $timestamp, wp_timezone());
+}
+
+function logestay_email_payment_method_label(string $method): string {
+	$map = [
+		'card'   => 'Carte bancaire',
+		'paypal' => 'PayPal',
+		'bank'   => 'Virement bancaire',
+		'cash'   => 'Paiement sur place',
+		'link'   => 'Lien de paiement',
+	];
+
+	$method = strtolower(trim($method));
+	return $map[$method] ?? ucfirst($method);
+}
+
+function logestay_email_property_address(int $listing_id, int $city_id): string {
+	$candidates = [
+		'logestay_property_address',
+		'logestay_listing_address',
+		'logestay_address',
+		'_logestay_listing_location_title',
+		'_logestay_listing_location_subtitle',
+	];
+
+	foreach ($candidates as $meta_key) {
+		$value = trim((string) get_post_meta($listing_id, $meta_key, true));
+		if ($value !== '') {
+			return $value;
+		}
+	}
+
+	if ($city_id) {
+		return (string) get_the_title($city_id);
+	}
+
+	return '';
+}
+
+function logestay_email_subject_from_vars(array $vars, int $booking_id = 0): string {
+	$method = logestay_email_norm_method($vars['payment_method'] ?? '');
+	$pay    = logestay_email_norm_payment_status($vars['payment_status'] ?? '');
+	$book   = logestay_email_norm_booking_status($vars['booking_status'] ?? '');
+
+	// Client requirement: special subject for confirmed paid card/PayPal bookings.
+	if (in_array($method, ['card', 'paypal'], true) && $pay === 'paid' && $book === 'confirmed') {
+		$property_name  = trim((string) ($vars['listing_title'] ?? ''));
+		$check_in_label = trim((string) ($vars['check_in_formatted'] ?? ($vars['check_in'] ?? '')));
+		$check_out_label = trim((string) ($vars['check_out_formatted'] ?? ($vars['check_out'] ?? '')));
+
+		return sprintf(
+			'Réservation confirmée – %s du %s au %s',
+			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id),
+			$check_in_label,
+			$check_out_label
+		);
+	}
+
+	$subject_map = [
+		'pending'      => __('Payment pending', 'logestay'),
+		'paid'         => __('Payment confirmed', 'logestay'),
+		'not_received' => __('Payment not received', 'logestay'),
+	];
+
+	$book_map = [
+		'pending'   => __('Booking pending', 'logestay'),
+		'confirmed' => __('Booking confirmed', 'logestay'),
+		'cancelled' => __('Booking cancelled', 'logestay'),
+	];
+
+	return sprintf(
+		'%s — %s%s',
+		$subject_map[$pay] ?? __('Booking update', 'logestay'),
+		$book_map[$book] ?? __('Booking update', 'logestay'),
+		$booking_id ? sprintf(' (Booking #%d)', $booking_id) : ''
+	);
+}
+
 
 /**
  * Normalize meta values to our 3x3 matrix.
@@ -77,8 +176,12 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 	$payment_method = (string) get_post_meta($booking_id, 'logestay_payment_method', true);
 	$payment_status = (string) get_post_meta($booking_id, 'logestay_payment_status', true);
 	$booking_status = (string) get_post_meta($booking_id, 'logestay_booking_status', true);
+	$checkin_time   = $listing_id ? (string) get_post_meta($listing_id, 'logestay_checkin_time', true) : '';
+	$checkout_time  = $listing_id ? (string) get_post_meta($listing_id, 'logestay_checkout_time', true) : '';
 
 	// URLs / support
+	$settings = get_option('logestay_settings', []);
+	$settings = is_array($settings) ? $settings : [];
 	$support_email = (string) (
 		function_exists('logestay_get_option')
 			? logestay_get_option('logestay_contact_email', get_option('admin_email'))
@@ -110,6 +213,10 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 		$bank_reference = 'REF-' . $booking_id;
 	}
 
+	$guest_count = max(0, $adults) + max(0, $children);
+	$property_address = logestay_email_property_address($listing_id, $city_id);
+	$host_phone = trim((string) ($settings['logestay_contact_phone'] ?? ''));
+
 	$vars = [
 		'booking_id' => $booking_id,
 		'listing_id' => $listing_id,
@@ -130,6 +237,7 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 
 		// Guest info
 		'guest_name'  => $guest_name,
+		'guest_first_name' => logestay_email_guest_first_name($guest_name),
 		'guest_email' => $guest_email,
 		'guest_phone' => $guest_phone,
 		'guest_note'  => $guest_note,
@@ -137,11 +245,20 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 		'adults'   => max(0, $adults),
 		'children' => max(0, $children),
 		'pets'     => max(0, $pets),
+		'guest_count' => $guest_count,
 
 		// Status
 		'payment_method' => $payment_method,
+		'payment_method_label' => logestay_email_payment_method_label($payment_method),
 		'payment_status' => $payment_status,
 		'booking_status' => $booking_status,
+		'checkin_time' => $checkin_time ?: '15:00',
+		'checkout_time' => $checkout_time ?: '11:00',
+		'check_in_formatted' => logestay_email_format_date($check_in),
+		'check_out_formatted' => logestay_email_format_date($check_out),
+		'property_address' => $property_address,
+		'reservation_price' => number_format_i18n($total, 2) . ' ' . $currency,
+		'host_phone' => $host_phone,
 
 		// Links / support
 		'account_url'   => $account_url,
@@ -186,28 +303,7 @@ function logestay_send_booking_status_email(int $booking_id): bool {
 		return false;
 	}
 
-	// Subject builder (simple + consistent)
-	$pay  = logestay_email_norm_payment_status($vars['payment_status'] ?? 'pending');
-	$book = logestay_email_norm_booking_status($vars['booking_status'] ?? 'pending');
-
-	$subject_map = [
-		'pending'      => __('Payment pending', 'logestay'),
-		'paid'         => __('Payment confirmed', 'logestay'),
-		'not_received' => __('Payment not received', 'logestay'),
-	];
-
-	$book_map = [
-		'pending'   => __('Booking pending', 'logestay'),
-		'confirmed' => __('Booking confirmed', 'logestay'),
-		'cancelled' => __('Booking cancelled', 'logestay'),
-	];
-
-	$subject = sprintf(
-		'%s — %s (Booking #%d)',
-		$subject_map[$pay] ?? 'Payment update',
-		$book_map[$book] ?? 'Booking update',
-		$booking_id
-	);
+	$subject = logestay_email_subject_from_vars($vars, $booking_id);
 
 	$html = logestay_email_wrap($content, [
 		'preheader' => $subject,
@@ -311,25 +407,7 @@ function logestay_email_template_config(string $key, int $booking_id = 0): array
 	// ✅ IMPORTANT: your templates are in scenarios/{method}/{pay}-{book}.php
 	$file = "scenarios/{$method}/{$pay}-{$book}.php";
 
-	// Subject (same idea you already had, but consistent)
-	$subject_map = [
-		'pending'      => __('Payment pending', 'logestay'),
-		'paid'         => __('Payment confirmed', 'logestay'),
-		'not_received' => __('Payment not received', 'logestay'),
-	];
-
-	$book_map = [
-		'pending'   => __('Booking pending', 'logestay'),
-		'confirmed' => __('Booking confirmed', 'logestay'),
-		'cancelled' => __('Booking cancelled', 'logestay'),
-	];
-
-	$subject = sprintf(
-		'%s — %s%s',
-		$subject_map[$pay] ?? __('Booking update', 'logestay'),
-		$book_map[$book] ?? __('Booking update', 'logestay'),
-		$booking_id ? sprintf(' (Booking #%d)', $booking_id) : ''
-	);
+	$subject = logestay_email_subject_from_vars(logestay_email_vars_from_booking($booking_id), $booking_id);
 
 	return [
 		'template' => $file,

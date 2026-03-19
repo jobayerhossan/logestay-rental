@@ -1,53 +1,61 @@
-<?php if ( ! defined('ABSPATH') ) exit;
+<?php if ( ! defined('ABSPATH') ) exit; ?>
+<p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.6;">
+	Bonjour <?php echo esc_html($guest_first_name ?: $guest_name); ?>,
+</p>
 
-$email_title        = 'Paiement confirmé';
-$email_badge_payment= ['text'=>'Payé','tone'=>'success'];
-$email_badge_booking= ['text'=>'Confirmée','tone'=>'success'];
-$email_payment_text = "Votre paiement par carte bancaire a été validé avec succès.";
-$email_method_label = 'carte bancaire';
+<p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.7;">
+	Merci pour votre réservation.<br>
+	Votre paiement a été validé et votre réservation est maintenant confirmée.
+</p>
 
-$stay_title   = esc_html($listing_title ?? '');
-$stay_city    = esc_html($city_name ?? '');
-$stay_dates   = esc_html(($check_in ?? '') . ' → ' . ($check_out ?? ''));
-$stay_guests  = (int) get_post_meta($booking_id, 'logestay_adults', true) + (int) get_post_meta($booking_id, 'logestay_children', true);
+<div style="margin:20px 0;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:20px;">
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">🏠 Logement</div>
+	<div style="margin:0 0 18px;color:#0F172A;font-size:16px;font-weight:700;line-height:1.6;">
+		<?php echo esc_html($listing_title); ?>
+	</div>
 
-$email_stay_html = '
-<div style="margin-top:16px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:14px;padding:16px;">
-  <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
-    <div style="width:34px;height:34px;border-radius:999px;background:#DBEAFE;display:inline;align-items:center;justify-content:center;font-weight:900;color:#1D4ED8;  line-height: 34px;
-  text-align: center;">📍</div>
-    <div style="font-weight:900;color:#0F172A;">Votre séjour</div>
-  </div>
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📍 Adresse</div>
+	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($property_address ?: $city_name); ?>
+	</div>
 
-  <div style="color:#0F172A;font-weight:900;margin-bottom:6px;">'.$stay_title.'</div>
-  <div style="color:#334155;font-size:13px;line-height:1.45;">'.$stay_city.'</div>
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📅 Arrivée</div>
+	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($check_in_formatted ?: $check_in); ?> a partir de <?php echo esc_html($checkin_time); ?>
+	</div>
 
-  <hr style="border:none;border-top:1px solid #BFDBFE;margin:12px 0;">
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📅 Départ</div>
+	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($check_out_formatted ?: $check_out); ?> avant <?php echo esc_html($checkout_time); ?>
+	</div>
 
-  <div style="display:flex;gap:18px;flex-wrap:wrap;">
-    <div>
-      <div style="font-size:11px;color:#64748B;font-weight:800;letter-spacing:.06em;margin-bottom:2px;">DATES</div>
-      <div style="font-weight:900;color:#0F172A;">'.$stay_dates.'</div>
-    </div>
-    <div>
-      <div style="font-size:11px;color:#64748B;font-weight:800;letter-spacing:.06em;margin-bottom:2px;">VOYAGEURS</div>
-      <div style="font-weight:900;color:#0F172A;">'.$stay_guests.' personne(s)</div>
-    </div>
-  </div>
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">👥 Voyageurs</div>
+	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html((string) $guest_count); ?>
+	</div>
 
-  <div style="margin-top:14px;text-align:center;">
-    <a href="'.esc_url($site_url ?? home_url('/')).'"
-       style="display:inline-block;background:#F97316;color:#fff;text-decoration:none;font-weight:900;padding:12px 20px;border-radius:12px;">
-      📍 Voir ma localisation
-    </a>
-  </div>
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">💳 Mode de paiement</div>
+	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($payment_method_label); ?>
+	</div>
 
-  <div style="margin-top:14px;background:#DCFCE7;border:1px solid #86EFAC;border-radius:12px;padding:12px;color:#065F46;font-weight:800;font-size:13px;">
-    ✅ Bon séjour ! Merci pour votre confiance. Nous sommes ravis de vous accueillir avec LOGESTAY.
-  </div>
-</div>';
+	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">💰 Montant payé</div>
+	<div style="margin:0;color:#334155;font-size:15px;font-weight:700;line-height:1.7;">
+		<?php echo esc_html($reservation_price); ?>
+	</div>
+</div>
 
-$email_cta_primary = false;
-$email_cta_secondary = false;
+<p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.7;">
+	Les instructions d’arrivée et le code du boitier a cles vous seront envoyes 24 heures avant votre arrivée.
+</p>
 
-include get_template_directory() . '/inc/emails/templates/layouts/layout-card.php';
+<?php if ( ! empty($host_phone) ) : ?>
+	<p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.7;">
+		Si vous avez besoin d’aide :<br>
+		📞 <?php echo esc_html($host_phone); ?>
+	</p>
+<?php endif; ?>
+
+<p style="margin:0;color:#111827;font-size:16px;line-height:1.7;">
+	Nous vous souhaitons un excellent séjour.
+</p>
