@@ -1,0 +1,21 @@
+<?php if ( ! defined('ABSPATH') ) exit;
+
+$scenario = [
+  'title' => 'Paiement non reçu',
+  'pay_badge'  => ['label'=>'Non reçu','bg'=>'#FEE2E2','color'=>'#991B1B','icon'=>'⛔'],
+  'book_badge' => ['label'=>'En attente','bg'=>'#FEF3C7','color'=>'#92400E','icon'=>'⏳'],
+  'message' => "Nous n'avons pas reçu votre paiement par virement bancaire. Veuillez vérifier ou contacter notre support.",
+  'method_label' => 'via virement bancaire',
+  'method_emoji' => '💳',
+  'cta_primary_label' => 'Contacter le support',
+  'cta_primary_url' => 'mailto:' . ($vars['support_email'] ?? get_option('admin_email')),
+  'show_bank_block' => true,
+  'note_box' => [
+    'text' => "Action requise : veuillez régulariser votre paiement pour confirmer votre réservation.",
+    'bg' => '#FEE2E2',
+    'border' => '#FCA5A5',
+    'color' => '#991B1B',
+  ],
+];
+
+include get_template_directory() . '/inc/emails/templates/layouts/layout-bank.php';

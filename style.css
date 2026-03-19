@@ -1,0 +1,86 @@
+/*
+Theme Name: Logestay Rental
+Theme URI: https://logestay.com
+Author: Jobayer
+Author URI: https://jobayerhossan.com
+Description: Custom WordPress theme converted from a React/Vite build. Step 1: header/footer shell + enqueue compiled CSS/JS. Menus via WP; header/footer text via Customizer.
+Version: 1.0.0
+Requires at least: 6.2
+Tested up to: 6.6
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: logestay
+Domain Path: /languages
+Tags: custom-theme, acf, customizer, menu
+Update URI: false
+*/
+
+
+.logestay-review-slide {
+  width: 100%;
+}
+
+.page_content h2 {
+  color: rgb(17 24 39);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+.page_content p {
+  line-height: 1.625;
+  color: rgb(55 65 81);
+  margin-bottom: 2rem;
+}
+.page_content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-left: 1rem;
+  margin-bottom: .75rem;
+  color: rgb(55 65 81);
+}
+.page_content p:last-child {
+  margin-bottom: 0px;
+}
+.page_content p.mb-3 {
+  margin-bottom: .75rem;
+}
+.note{
+    padding: 1rem;
+    background-color: rgb(249 250 251); 
+    border: 1px solid rgb(229 231 235);
+      border-radius: .5rem;
+        font-size: .875rem;
+          line-height: 1.625;
+          color: rgb(75 85 99);
+}
+.w-3\.5 {
+  width: .875rem;
+}
+.h-3\.5 {
+  height: .875rem;
+}
+.gap-1\.5 {
+  gap: .375rem;
+}
+.space-y-1>:not([hidden])~:not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top:calc(.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom:calc(.25rem * var(--tw-space-y-reverse))
+}
+.text-orange-700 {
+  --tw-text-opacity: 1;
+  color: rgb(194 65 12 / var(--tw-text-opacity, 1));
+}
+.mx-2 {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.mb-1\.5 {
+  margin-bottom: .375rem;
+}
+.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity, 1));
+}

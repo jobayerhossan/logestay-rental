@@ -1,0 +1,1966 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Logestay Rental\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-16 21:50+0000\n"
+"PO-Revision-Date: 2026-03-16 20:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.1; wp-6.9; php-8.5.0\n"
+"X-Domain: logestay"
+
+#: functions.php:241
+msgid "+1 555 123 4567"
+msgstr "+1 555 123 4567"
+
+#: functions.php:200 functions.php:214 functions.php:215
+msgid "13 years and older"
+msgstr "13 ans et plus"
+
+#: functions.php:216
+msgid "2 to 12 years"
+msgstr "2 à 12 ans"
+
+#: functions.php:201
+msgid "2–12 years"
+msgstr "2 à 12 ans"
+
+#: templates/login-template.php:1513
+msgid "A reset link has been sent to your email address."
+msgstr "Un lien de réinitialisation a été envoyé à votre adresse e-mail."
+
+#: functions.php:208
+msgid "A secure payment link will be sent by email and SMS."
+msgstr "Un paiement sécurisé, un lien vous sera envoyé par email et SMS."
+
+#: templates/logestay-default-page.php:612
+msgid "Access configuration area"
+msgstr "Configuration de l'accès de la zone"
+
+#: templates/login-template.php:1332
+msgid "Access your management space"
+msgstr "Accédez à votre espace de gestion"
+
+#: inc/admin/logestay-listing-metabox.php:270
+msgid "Add / Manage Images"
+msgstr "Ajouter / Gérer Les Images"
+
+#: inc/homepage-section-hero.php:61
+msgid "Add / Select Images"
+msgstr "Ajouter / Sélectionner Des Images"
+
+#: inc/admin/logestay-listing-metabox.php:322
+msgid "Add custom"
+msgstr "Ajouter personnalisé"
+
+#: inc/admin/logestay-city-metabox.php:141
+msgid "Add Nearby Place"
+msgstr "Ajouter Proximité De La Place"
+
+#: inc/post-types/logestay-city.php:17
+msgid "Add New"
+msgstr "Ajouter De Nouveaux"
+
+#: inc/post-types/logestay-city.php:18
+msgid "Add New City"
+msgstr "Ajouter une ville"
+
+#: inc/post-types/logestay-listing.php:17
+msgid "Add New Listing"
+msgstr "Ajouter un logement"
+
+#: inc/admin/logestay-listing-metabox.php:307
+msgid "Add preset"
+msgstr "Ajouter un paramètre prédéfini"
+
+#: inc/homepage-section-hero.php:55
+msgid "Add unlimited images. Drag & drop to reorder."
+msgstr "Ajouter un nombre illimité d'images. Glisser-déposer pour réorganiser."
+
+#: inc/admin/logestay-booking-metabox.php:114
+msgid "Admin Actions (Optional)"
+msgstr "Admin Actions (En Option)"
+
+#: inc/ajax.php:138
+msgid "Adresse e-mail :"
+msgstr "Adresse e-mail :"
+
+#: functions.php:226
+msgid "Adult(s)"
+msgstr "Adulte(s)"
+
+#: functions.php:197 inc/admin/logestay-booking-metabox.php:217
+msgid "Adults"
+msgstr "Adultes"
+
+#: templates/login-template.php:1383 templates/login-template.php:1384
+msgid "Afficher le mot de passe"
+msgstr "Afficher le mot de passe"
+
+#: inc/admin/logestay-listing-metabox.php:239
+msgid "Airbnb iCal URL"
+msgstr "Airbnb iCal URL"
+
+#: inc/admin/logestay-listing-metabox.php:253
+msgid "Airbnb Listing Link"
+msgstr "Airbnb Liste Des Liens"
+
+#: inc/homepage-section-cta.php:43
+msgid "Airbnb URL"
+msgstr "Airbnb URL"
+
+#: inc/admin/logestay-listing-metabox.php:285
+#: inc/post-types/logestay-amenity.php:15
+#: inc/post-types/logestay-amenity.php:17
+msgid "Amenities"
+msgstr "Les commodités"
+
+#: inc/post-types/logestay-amenity.php:16
+msgid "Amenity"
+msgstr "Les commodités"
+
+#: functions.php:170
+msgid "Amount to pay"
+msgstr "Montant à payer"
+
+#: inc/booking.php:432
+msgid "Amount too small"
+msgstr "La valeur était trop petite"
+
+#: functions.php:148
+msgid "April"
+msgstr "Avril"
+
+#: templates/login-template.php:1444
+msgid "Are you the site owner?"
+msgstr "Vous êtes le propriétaire du site ?"
+
+#: functions.php:121
+msgid "Arrival"
+msgstr "Arrivée"
+
+#: inc/admin/logestay-listing-metabox.php:162
+msgid "Assign this listing to a destination city."
+msgstr "Attribuer cette liste pour une ville de destination."
+
+#: functions.php:152
+msgid "August"
+msgstr "Août"
+
+#: template-parts/city-itemmd.php:30 template-parts/city-item.php:29
+msgid "available properties"
+msgstr "logements disponibles"
+
+#: 404.php:18 page.php:18 functions.php:244
+msgid "Back"
+msgstr "De retour"
+
+#: functions.php:175
+msgid "Bank details"
+msgstr "Banque de détails"
+
+#: inc/settings/page-payments.php:321 inc/settings/page-payments.php:512
+msgid "Bank Transfer"
+msgstr "Virement Bancaire"
+
+#: functions.php:132 functions.php:193
+msgid "Bank transfer"
+msgstr "Virement bancaire"
+
+#: inc/emails/email-hooks.php:243
+msgid "Bank transfer instructions – Booking #%d"
+msgstr ""
+
+#: functions.php:124
+msgid "before"
+msgstr "avant"
+
+#: functions.php:177 inc/settings/page-payments.php:337
+msgid "Beneficiary"
+msgstr "Bénéficiaire"
+
+#: functions.php:179 inc/settings/page-payments.php:355
+msgid "BIC"
+msgstr "BIC"
+
+#: inc/ajax.php:131
+#, php-format
+msgid "Bonjour %s,"
+msgstr "Bonjour %s,"
+
+#: functions.php:230
+msgid "Book now"
+msgstr "Réservez maintenant"
+
+#: functions.php:187 templates/homepage.php:530
+msgid "Book on Airbnb"
+msgstr "Réservér sur Airbnb"
+
+#: functions.php:188 templates/homepage.php:541
+msgid "Book on Booking"
+msgstr "Réserver sur Booking"
+
+#: templates/homepage.php:515
+msgid "Book on the site"
+msgstr "Réserver sur le site"
+
+#: inc/booking.php:341 inc/post-types/logestay-booking.php:16
+msgid "Booking"
+msgstr "Réservation"
+
+#: inc/emails/email-hooks.php:202 inc/emails/email-hooks.php:324
+msgid "Booking cancelled"
+msgstr "Réservation annulée"
+
+#: inc/emails/email-hooks.php:201 inc/emails/email-hooks.php:323
+msgid "Booking confirmed"
+msgstr "La réservation est confirmée"
+
+#: functions.php:259
+msgid "Booking confirmed and paid!"
+msgstr "Réservation confirmée et payée!"
+
+#: inc/admin/logestay-booking-metabox.php:13
+msgid "Booking Details"
+msgstr "Les Détails De La Réservation"
+
+#: inc/admin/logestay-listing-metabox.php:243
+msgid "Booking iCal URL"
+msgstr "Réservation iCal URL"
+
+#: inc/admin/logestay-booking-metabox.php:168
+msgid "Booking ID"
+msgstr "Numéro de réservation"
+
+#: inc/admin/logestay-listing-metabox.php:257
+msgid "Booking Listing Link"
+msgstr "Liste Des Liens De Réservation"
+
+#: inc/booking.php:413 inc/booking.php:834
+msgid "Booking not pending"
+msgstr "Réservation pas en attendant"
+
+#: inc/emails/email-hooks.php:200 inc/emails/email-hooks.php:322
+msgid "Booking pending"
+msgstr "Réservation en attente"
+
+#: functions.php:69 inc/ajax.php:84
+msgid "Booking problem"
+msgstr "Réservation problème"
+
+#: functions.php:256
+msgid "Booking request registered"
+msgstr "Demande de réservation enregistré"
+
+#: functions.php:250
+msgid "Booking request sent"
+msgstr "Demande de réservation envoyée"
+
+#: inc/admin/logestay-booking-metabox.php:173
+msgid "Booking Status"
+msgstr "Le Statut De La Réservation"
+
+#: inc/emails/email-hooks.php:329 inc/emails/email-hooks.php:330
+msgid "Booking update"
+msgstr "Mise à jour de la réservation"
+
+#: inc/homepage-section-cta.php:48
+#, fuzzy
+#| msgid "Booking.com Link"
+msgid "Booking.com URL"
+msgstr "Booking.com Lien"
+
+#: inc/post-types/logestay-booking.php:15
+#: inc/post-types/logestay-booking.php:17
+msgid "Bookings"
+msgstr "Réservations"
+
+#: functions.php:206
+msgid "Bring a valid ID. A receipt will be provided on site."
+msgstr "Apportez une pièce d'identité valide. Un reçu sera fourni sur place."
+
+#: inc/homepage-section-hero.php:48
+msgid "Button Link"
+msgstr "Bouton Lien"
+
+#: inc/homepage-section-hero.php:43
+msgid "Button Text"
+msgstr "Texte Du Bouton"
+
+#: functions.php:76 templates/login-template.php:1549
+msgid "Cancel"
+msgstr "Annuler"
+
+#: inc/admin/logestay-listing-metabox.php:167
+msgid "Capacity & Limits"
+msgstr "Capacités Et Limites"
+
+#: functions.php:194
+msgid "Cash on-site"
+msgstr "En espèces sur place"
+
+#: inc/settings/page-payments.php:378 inc/settings/page-payments.php:513
+msgid "Cash Payment"
+msgstr "Paiement en liquide"
+
+#: functions.php:133 functions.php:203
+msgid "Cash payment"
+msgstr "Paiement en liquide"
+
+#: inc/emails/email-hooks.php:247
+msgid "Cash payment instructions – Booking #%d"
+msgstr ""
+
+#: functions.php:204
+msgid "Cash payment is made on site. Booking confirmed after payment."
+msgstr ""
+"Le paiement en espèces est faite sur le site. La réservation est confirmée "
+"après le paiement."
+
+#: inc/admin/logestay-booking-metabox.php:202
+msgid "Check-in"
+msgstr "Check-in"
+
+#: inc/admin/logestay-listing-metabox.php:197
+msgid "Check-in & Check-out"
+msgstr "Check-in & Check-out"
+
+#: functions.php:127
+#, php-format
+msgid "Check-in from %1$s → Check-out before %2$s"
+msgstr "Arrivée à partir de %1$s → Départ avant %2$s"
+
+#: inc/admin/logestay-listing-metabox.php:201
+msgid "Check-in time"
+msgstr "Arrivée dans le temps"
+
+#: inc/admin/logestay-booking-metabox.php:207
+msgid "Check-out"
+msgstr "Check-out"
+
+#: inc/admin/logestay-listing-metabox.php:207
+msgid "Check-out time"
+msgstr "Le Check-out"
+
+#: functions.php:227
+msgid "Child"
+msgstr "Enfant"
+
+#: functions.php:198 inc/admin/logestay-booking-metabox.php:222
+msgid "Children"
+msgstr "Enfants"
+
+#: inc/settings/settings.php:195
+msgid "Choose"
+msgstr "Choisir"
+
+#: inc/settings/page-general.php:32 inc/settings/page-general.php:46
+msgid "Choose Logo"
+msgstr "Choisissez Le Logo"
+
+#: functions.php:181
+msgid "Choose your dates"
+msgstr "Choisissez vos dates de séjour"
+
+#: inc/post-types/logestay-city.php:15 inc/post-types/logestay-city.php:25
+msgid "Cities"
+msgstr "Villes"
+
+#: inc/admin/logestay-listing-metabox.php:153
+#: inc/post-types/logestay-city.php:16
+msgid "City"
+msgstr "Ville"
+
+#: inc/admin/logestay-city-metabox.php:16
+msgid "City Location & Nearby"
+msgstr "Ville & Alentours"
+
+#: inc/ajax.php:183
+msgid "City not found"
+msgstr "Ville pas trouvé"
+
+#: inc/admin/logestay-booking-metabox.php:192
+msgid "City:"
+msgstr "Ville:"
+
+#: inc/admin/logestay-listing-metabox.php:224
+msgid "Cleaning Fee"
+msgstr "Frais De Nettoyage"
+
+#: functions.php:229 inc/admin/logestay-booking-metabox.php:253
+msgid "Cleaning fee"
+msgstr "Frais de nettoyage"
+
+#: inc/admin/logestay-listing-metabox.php:273
+msgid "Clear"
+msgstr "Claire"
+
+#: inc/admin/logestay-booking-metabox.php:155
+msgid "Clear Hold Expiry"
+msgstr "Clair Tenir Expiration"
+
+#: functions.php:182
+msgid ""
+"Click on a check-in date then a check-out date to select your stay period."
+msgstr ""
+"Cliquez sur une date d'arrivée puis une date de départ pour sélectionner la "
+"durée de votre séjour."
+
+#: functions.php:78 functions.php:258
+msgid "Close"
+msgstr "Fermer"
+
+#: inc/settings/settings.php:45 inc/settings/settings.php:46
+msgid "Colors"
+msgstr "Les couleurs"
+
+#: inc/ajax.php:42
+msgid "Come back soon to discover our new offers"
+msgstr "Revenez bientôt pour découvrir nos nouvelles offres"
+
+#: inc/emails/templates/layouts/payment-pending.php:40
+msgid "Complete payment"
+msgstr "Le paiement complet"
+
+#: templates/login-template.php:1451
+msgid "Configure area access"
+msgstr "Configurer l'accès à la zone"
+
+#: functions.php:245
+msgid "Confirm booking"
+msgstr "Confirmer la réservation"
+
+#: inc/settings/page-general.php:54
+msgid "Contact Form Email"
+msgstr "Formulaire De Contact E-Mail"
+
+#: templates/login-template.php:1461
+msgid "Contact Loge Stay support"
+msgstr "Contacter le support Loge Stay"
+
+#: functions.php:60 templates/homepage.php:489
+#: inc/emails/templates/layouts/payment-pending.php:44
+msgid "Contact support"
+msgstr "Contacter le support"
+
+#: inc/settings/page-maintenance.php:28
+msgid "Contact title"
+msgstr "Titre du Contact"
+
+#: functions.php:213
+msgid "Could not create booking hold"
+msgstr "N'a pas pu créer de réservation tenir"
+
+#: inc/booking.php:181
+msgid "Could not create booking."
+msgstr "N'a pas pu créer de réservation."
+
+#: functions.php:255
+msgid "Could not save booking."
+msgstr "N'a pas pu enregistrer la réservation."
+
+#: inc/admin/logestay-booking-metabox.php:288
+msgid "Created At"
+msgstr "Créé À"
+
+#: inc/settings/page-maintenance.php:33
+msgid "Credit"
+msgstr "Crédit"
+
+#: inc/settings/page-payments.php:157 inc/settings/page-payments.php:510
+msgid "Credit Card"
+msgstr "Carte De Crédit"
+
+#: functions.php:130 functions.php:191
+msgid "Credit card"
+msgstr "Carte bancaire"
+
+#: functions.php:171
+msgid "Credit card payment"
+msgstr "Paiement par carte de crédit"
+
+#: inc/homepage-meta.php:222
+msgid "CTA"
+msgstr "CTA"
+
+#: inc/admin/logestay-listing-metabox.php:229
+msgid "Currency"
+msgstr "Monnaie"
+
+#: inc/admin/logestay-listing-metabox.php:313
+msgid "Custom label (e.g. WC séparés)"
+msgstr "Étiquette personnalisée (par exemple, WC séparés)"
+
+#. Description of the theme
+msgid ""
+"Custom WordPress theme converted from a React/Vite build. Step 1: "
+"header/footer shell + enqueue compiled CSS/JS. Menus via WP; header/footer "
+"text via Customizer."
+msgstr ""
+"Personnalisé thème WordPress converti à partir d'un Réagir/Vite construire. "
+"Étape 1: en-tête/pied de page coque + enqueue compilé CSS/JS. Les Menus via "
+"WP; en-tête/pied de page du texte par le Personnalisateur."
+
+#: inc/booking.php:343
+msgid "Dates"
+msgstr "Dates"
+
+#: inc/booking.php:162
+msgid "Dates are no longer available."
+msgstr "Les Dates ne sont plus disponibles."
+
+#: functions.php:156
+msgid "December"
+msgstr "Décembre"
+
+#: inc/default-page.php:62
+msgid "Default Site Page is currently enabled."
+msgstr "Par défaut de la Page du Site est actuellement activé."
+
+#: functions.php:137 functions.php:190
+msgid "Delayed"
+msgstr "Différé"
+
+#: functions.php:122
+msgid "Departure"
+msgstr "Départ"
+
+#: functions.php:73
+msgid "Describe your question or problem in detail..."
+msgstr "Décrire votre question ou votre problème en détail..."
+
+#: inc/homepage-meta.php:192
+msgid "Destination"
+msgstr "Destination"
+
+#: functions.php:217
+msgid "Dogs, cats, etc."
+msgstr "Chiens, chats, etc."
+
+#: inc/admin/logestay-listing-metabox.php:275
+msgid "Drag to reorder. Click × to remove."
+msgstr "Faites glisser pour réorganiser. Cliquez × supprimer."
+
+#: inc/admin/logestay-listing-metabox.php:328
+msgid "Drag to reorder. You can mix presets and custom items."
+msgstr ""
+"Faites glisser pour réorganiser. Vous pouvez mélanger des presets et des "
+"éléments personnalisés."
+
+#: functions.php:70 inc/ajax.php:85
+msgid "During stay"
+msgstr "Pendant le séjour"
+
+#: inc/post-types/logestay-city.php:19
+msgid "Edit City"
+msgstr "Edit Ville"
+
+#: inc/post-types/logestay-listing.php:18
+msgid "Edit Listing"
+msgstr "Modifier La Liste"
+
+#: functions.php:238 inc/settings/page-maintenance.php:32
+msgid "Email"
+msgstr "E-mail"
+
+#: functions.php:64
+msgid "Email *"
+msgstr "E-mail *"
+
+#: templates/login-template.php:1520
+msgid "Email address"
+msgstr "Adresse Email"
+
+#: inc/ajax.php:123
+msgid "Email could not be sent. Please try again later."
+msgstr ""
+"E-mail n'a pas pu être envoyé. S'il vous plaît essayer à nouveau plus tard."
+
+#: templates/logestay-login.php:119
+msgid "Email or username"
+msgstr "E-mail ou nom d'utilisateur"
+
+#: inc/ajax.php:110
+msgid "Email:"
+msgstr "E-mail:"
+
+#: inc/ajax.php:143
+msgid ""
+"En attendant, vous pouvez consulter notre foire aux questions, qui répond "
+"aux interrogations les plus courantes concernant les réservations, les "
+"logements et les séjours."
+msgstr ""
+"En attendant, vous pouvez consulter notre foire aux questions, qui répond "
+"aux interrogations les plus courantes concernant les réservations, les "
+"logements et les séjours."
+
+#: inc/settings/page-payments.php:328
+msgid "Enable Bank Transfer"
+msgstr "Permettre Le Transfert De La Banque"
+
+#: inc/settings/page-payments.php:385
+msgid "Enable Cash Payment"
+msgstr "Activer Le Paiement En Espèces"
+
+#: inc/settings/page-payments.php:164
+msgid "Enable Credit Card"
+msgstr "Activer Carte De Crédit"
+
+#: inc/settings/page-general.php:15
+msgid "Enable Default Site Page (public)"
+msgstr "Activer par Défaut de la Page du Site (public)"
+
+#: inc/settings/page-maintenance.php:15
+msgid "Enable Maintenance Mode"
+msgstr "Activer Le Mode De Maintenance"
+
+#: inc/settings/page-payments.php:440
+msgid "Enable Payment Link"
+msgstr "Activer Le Lien De Paiement"
+
+#: inc/settings/page-payments.php:254
+msgid "Enable PayPal"
+msgstr "Permettre PayPal"
+
+#: inc/settings/settings.php:230
+msgid "Enabled"
+msgstr "Activé"
+
+#: templates/logestay-login.php:126
+msgid "Enter your email"
+msgstr "Entrez votre e-mail"
+
+#: templates/login-template.php:1505
+msgid "Enter your email address to receive a reset link."
+msgstr "Entrez votre adresse email pour recevoir un lien de réinitialisation."
+
+#: templates/logestay-login.php:143
+msgid "Enter your password"
+msgstr "Entrez votre mot de passe"
+
+#: templates/login-template.php:1528
+msgid "example@email.com"
+msgstr ""
+
+#: functions.php:61
+msgid ""
+"Explain your request to us, we will respond within 24 to 48 business hours."
+msgstr ""
+"Expliquer votre demande, nous vous répondrons dans les 24 à 48 heures "
+"ouvrées."
+
+#: inc/admin/logestay-listing-metabox.php:250
+msgid "External Links"
+msgstr "Liens Externes"
+
+#: inc/homepage-meta.php:212 inc/post-types/logestay-faq.php:16
+#: inc/post-types/logestay-faq.php:17
+msgid "FAQ"
+msgstr "FAQ"
+
+#: inc/post-types/logestay-faq.php:15
+msgid "FAQs"
+msgstr "Faq"
+
+#: functions.php:146
+msgid "February"
+msgstr "Février"
+
+#: templates/login-template.php:1481
+msgid "Fermer la fenêtre"
+msgstr "Fermer la fenêtre"
+
+#: functions.php:62
+msgid "First Name *"
+msgstr "Prénom *Nom *"
+
+#: inc/settings/page-general.php:90
+msgid "Footer Copyright"
+msgstr "Le Pied De Page Droits D'Auteur"
+
+#: functions.php:7
+msgid "Footer Menu"
+msgstr "Le Pied De Page Menu"
+
+#: inc/settings/page-maintenance.php:29
+msgid "Footer note"
+msgstr "Note de pied de page"
+
+#: inc/settings/page-general.php:78
+msgid "Footer Subtitle"
+msgstr "Pied De Page Des Sous-Titres"
+
+#: inc/settings/page-general.php:66
+msgid "Footer Title"
+msgstr "Le Pied De Page De Titre"
+
+#: templates/logestay-login.php:174 templates/login-template.php:1421
+msgid "Forgot password?"
+msgstr "Mot de passe oublié?"
+
+#: templates/login-template.php:1501
+msgid "Forgot your password?"
+msgstr "Vous avez oublié votre mot de passe?"
+
+#: functions.php:164
+msgid "Fri"
+msgstr "Ven"
+
+#: functions.php:123
+msgid "from"
+msgstr "à partir de"
+
+#: functions.php:236
+msgid "Full name"
+msgstr "Nom complet"
+
+#: inc/admin/logestay-listing-metabox.php:264
+msgid "Gallery"
+msgstr "Galerie"
+
+#: inc/settings/settings.php:36 inc/settings/settings.php:37
+msgid "General"
+msgstr "Général"
+
+#: inc/default-page.php:65
+msgid "Go live now"
+msgstr "Allez vivre maintenant"
+
+#: inc/admin/logestay-city-metabox.php:79
+msgid "Google Map Embed URL (iframe src)"
+msgstr "Google Map Embed URL (iframe src)"
+
+#: inc/admin/logestay-city-metabox.php:87
+msgid "Google Map Open Link"
+msgstr "Google Map Ouvrir Le Lien"
+
+#: inc/admin/logestay-booking-metabox.php:237
+msgid "Guest Email"
+msgstr "Invité Par Courriel"
+
+#: inc/admin/logestay-booking-metabox.php:232
+msgid "Guest Name"
+msgstr "Nom Du Client"
+
+#: inc/admin/logestay-booking-metabox.php:248
+msgid "Guest Phone"
+msgstr "Invité De Téléphone"
+
+#: functions.php:225
+msgid "Guests"
+msgstr "Voyageurs"
+
+#: inc/emails/templates/layouts/payment-pending.php:4
+msgid "Hello"
+msgstr "Bonjour"
+
+#: inc/homepage-meta.php:187
+msgid "Hero"
+msgstr "Héros"
+
+#: inc/homepage-section-hero.php:20
+msgid "Hero Content"
+msgstr "Héros De Contenu"
+
+#: inc/homepage-section-hero.php:54
+msgid "Hero Slides"
+msgstr "Héros De Diapositives"
+
+#: inc/homepage-section-hero.php:28
+msgid "Hero Subtitle"
+msgstr "Héros De Sous-Titres"
+
+#: inc/homepage-section-hero.php:23
+msgid "Hero Title"
+msgstr "Héros De Titre"
+
+#: inc/homepage-section-cta.php:34
+#, fuzzy
+#| msgid "Show Airbnb Button"
+msgid "Hide Airbnb Button"
+msgstr "Montrer Airbnb Bouton"
+
+#: inc/homepage-section-cta.php:29
+msgid "Hide Book Button"
+msgstr "Masquer Le Bouton Carnet D'"
+
+#: inc/homepage-section-cta.php:39
+#, fuzzy
+#| msgid "Show Booking.com Button"
+msgid "Hide Booking.com Button"
+msgstr "Montrer Booking.com Bouton"
+
+#: inc/homepage-section-destination.php:51
+msgid "Hold Cmd/Ctrl to select multiple destinations."
+msgstr "Maintenez Cmd/Ctrl pour sélectionner plusieurs destinations."
+
+#: inc/booking.php:346
+msgid "Hold expires"
+msgstr "Maintenez l'expiration de"
+
+#: inc/admin/logestay-booking-metabox.php:179
+msgid "Hold Expires At"
+msgstr "Maintenez Expire À"
+
+#: inc/settings/page-payments.php:364 inc/settings/page-payments.php:421
+#: inc/settings/page-payments.php:449
+msgid "Hold Time(Hours)"
+msgstr "Temps De Maintien(Heures)"
+
+#. Name of the template
+#: templates/homepage.php:2
+msgid "Homepage"
+msgstr "Page d'accueil"
+
+#: inc/homepage-meta.php:44
+msgid "Homepage – Content Settings"
+msgstr "Page D'Accueil – Paramètres De Contenu"
+
+#. Author URI of the theme
+msgid "https://jobayerhossan.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://logestay.com"
+msgstr ""
+
+#: functions.php:74
+msgid "I agree that my information may be used to contact me. *"
+msgstr ""
+"J'accepte que mes informations peuvent être utilisées à me contacter. *"
+
+#: functions.php:178 inc/settings/page-payments.php:346
+msgid "IBAN"
+msgstr "IBAN"
+
+#: templates/login-template.php:13
+msgid "Identifiant ou mot de passe incorrect."
+msgstr "Identifiant ou mot de passe incorrect."
+
+#: inc/admin/logestay-listing-metabox.php:209
+msgid "If empty, default will be 11:00."
+msgstr "Si ce champ est vide, la valeur par défaut sera de 11:00."
+
+#: inc/admin/logestay-listing-metabox.php:203
+msgid "If empty, default will be 15:00."
+msgstr "Si ce champ est vide, la valeur par défaut sera de 15:00."
+
+#: functions.php:136 functions.php:189
+msgid "Immediate"
+msgstr "Immédiat"
+
+#: functions.php:180
+msgid ""
+"Include the booking reference in the transfer description for quick "
+"processing."
+msgstr ""
+"Inclure la référence de la réservation dans le transfert de description pour "
+"le traitement rapide."
+
+#: inc/booking.php:427 inc/booking.php:846
+msgid "Invalid amount"
+msgstr "Non valide montant"
+
+#: inc/booking.php:407 inc/booking.php:830
+msgid "Invalid booking"
+msgstr "Réservation non"
+
+#: inc/ajax.php:178
+msgid "Invalid city"
+msgstr "Invalide de la ville"
+
+#: inc/ajax.php:10
+msgid "Invalid city id"
+msgstr "Non valide ville id"
+
+#: functions.php:249
+msgid "Invalid email address."
+msgstr "Adresse email non valide."
+
+#: inc/booking.php:630
+msgid "Invalid listing"
+msgstr "Non valide inscription"
+
+#: inc/booking.php:570
+msgid "Invalid listing id"
+msgstr "Non valide le listing id"
+
+#: inc/booking.php:625
+msgid "Invalid nonce"
+msgstr "Non valide pour l'instant"
+
+#: inc/booking.php:707 inc/booking.php:749
+msgid "Invalid request"
+msgstr "Demande non valide"
+
+#: inc/booking.php:220
+msgid "Invalid stay length."
+msgstr "Non valide séjour longueur."
+
+#: inc/booking.php:712
+msgid "Invalid token"
+msgstr "Invalid token"
+
+#: functions.php:99 templates/homepage.php:402
+msgid "Itinerary"
+msgstr "Itinéraire"
+
+#: functions.php:145
+msgid "January"
+msgstr "Janvier"
+
+#. Author of the theme
+msgid "Jobayer"
+msgstr "Jobayer"
+
+#: functions.php:237
+msgid "John Doe"
+msgstr "John Doe"
+
+#: functions.php:239
+msgid "john.doe@email.com"
+msgstr ""
+
+#: functions.php:151
+msgid "July"
+msgstr "Juillet"
+
+#: functions.php:150
+msgid "June"
+msgstr "Juin"
+
+#: functions.php:243
+msgid "Late arrival, additional equipment..."
+msgstr "Arrivée tardive, de l'équipement supplémentaire..."
+
+#: templates/login-template.php:23
+msgid "Le lien de réinitialisation est invalide ou expiré."
+msgstr "Le lien de réinitialisation hne invalid ou expiré."
+
+#: functions.php:142
+msgid "Link sent by email - Validation after payment"
+msgstr "Lien envoyé par email - Validation après paiement"
+
+#: inc/booking.php:342 inc/homepage-meta.php:197
+#: inc/admin/logestay-booking-metabox.php:184
+#: inc/post-types/logestay-listing.php:16
+msgid "Listing"
+msgstr "Liste"
+
+#: inc/booking.php:1018
+msgid "Listing ID"
+msgstr "Listing ID"
+
+#: inc/admin/logestay-listing-metabox.php:13
+msgid "Listing Settings"
+msgstr "Liste Des Paramètres"
+
+#: inc/post-types/logestay-listing.php:15
+#: inc/post-types/logestay-listing.php:21
+msgid "Listings"
+msgstr "Logements"
+
+#: inc/settings/page-payments.php:182 inc/settings/page-payments.php:272
+msgid "Live (Production)"
+msgstr "En Direct (De La Production)"
+
+#: inc/settings/page-payments.php:298
+msgid "Live Client ID"
+msgstr "Client Live ID"
+
+#: inc/settings/page-payments.php:208
+msgid "Live Publishable Key"
+msgstr "Vivre Publiables Clé"
+
+#: inc/settings/page-payments.php:307
+msgid "Live Secret"
+msgstr "Live Secret"
+
+#: inc/settings/page-payments.php:217
+msgid "Live Secret Key"
+msgstr "En Direct De La Clé Secrète"
+
+#: inc/settings/page-payments.php:235
+msgid "Live Webhook Secret"
+msgstr "Vivre Webhook Secret"
+
+#: inc/homepage-meta.php:207
+msgid "Locations"
+msgstr "Emplacements"
+
+#: inc/settings/settings.php:24 inc/settings/settings.php:25
+msgid "LOGE STAY"
+msgstr "Loge Stay"
+
+#: templates/logestay-maintenance.php:60
+msgid "Loge Stay"
+msgstr "Loge Stay"
+
+#: inc/settings/page-colors.php:36
+msgid "LOGE STAY – Colors"
+msgstr "Loge Stay – Couleurs"
+
+#: inc/settings/page-general.php:108
+msgid "LOGE STAY – General"
+msgstr "Loge Stay – Général"
+
+#: inc/settings/page-payments.php:507
+msgid "LOGE STAY – Payments"
+msgstr "Loge Stay – Payments"
+
+#. Name of the theme
+msgid "Logestay Rental"
+msgstr "Logestay Location"
+
+#: templates/logestay-login.php:201
+msgid "LOGESTAY — Premium short-stay rental platform"
+msgstr "LOGESTAY — Prime de court séjour plateforme de location d'"
+
+#: inc/settings/page-general.php:26
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/settings/page-general.php:40
+msgid "Logo for Email Header"
+msgstr "Logo adresse e-Mail"
+
+#: inc/ajax.php:148
+msgid "L’équipe LOGESTAY"
+msgstr "L'équipe LOGESTAY"
+
+#: inc/settings/settings.php:62 inc/settings/settings.php:63
+#: inc/settings/page-maintenance.php:54
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#: inc/settings/page-maintenance.php:8
+msgid "Maintenance Mode"
+msgstr "Le Mode De Maintenance"
+
+#: functions.php:176
+msgid ""
+"Make the transfer to confirm your booking. Dates are temporarily blocked."
+msgstr ""
+"Faire le transfert pour confirmer votre réservation. Les Dates sont "
+"temporairement bloqués."
+
+#: functions.php:147
+msgid "March"
+msgstr "Mars"
+
+#: templates/login-template.php:1385
+msgid "Masquer le mot de passe"
+msgstr "Masquer le mot de passe"
+
+#: inc/admin/logestay-listing-metabox.php:170
+msgid "Max Adults"
+msgstr "Max Adultes"
+
+#: inc/admin/logestay-listing-metabox.php:174
+msgid "Max Children"
+msgstr "Max Enfants"
+
+#: inc/admin/logestay-listing-metabox.php:189
+msgid "Max Nights"
+msgstr "Max Nuits"
+
+#: inc/admin/logestay-listing-metabox.php:178
+msgid "Max Pets"
+msgstr "Max Les Animaux De Compagnie"
+
+#: functions.php:149
+msgid "May"
+msgstr "Mai"
+
+#: inc/ajax.php:132
+msgid "Merci de nous avoir contactés."
+msgstr "Merci de nous avoir contactés."
+
+#: inc/settings/page-maintenance.php:26
+msgid "Message"
+msgstr "Message"
+
+#: functions.php:72
+msgid "Message *"
+msgstr "Message *"
+
+#: functions.php:79 inc/ajax.php:163
+msgid "Message sent successfully!"
+msgstr "Message envoyé avec succès!"
+
+#: inc/ajax.php:113
+msgid "Message:"
+msgstr "Message:"
+
+#: inc/admin/logestay-listing-metabox.php:185
+msgid "Min Nights"
+msgstr "Min Nuits"
+
+#: functions.php:160
+msgid "Mon"
+msgstr "Lun"
+
+#: inc/ajax.php:109
+msgid "Name:"
+msgstr "Nom:"
+
+#: templates/homepage.php:355
+msgid "Nearby"
+msgstr "À proximité"
+
+#: inc/admin/logestay-city-metabox.php:97
+msgid "Nearby Places"
+msgstr "À Proximité Des Lieux"
+
+#: functions.php:82
+msgid "Network error. Please try again."
+msgstr "Erreur de réseau. Merci d'essayer de nouveau."
+
+#: inc/post-types/logestay-city.php:20
+msgid "New City"
+msgstr "Nouvelle Ville"
+
+#: inc/ajax.php:107
+msgid "New support request"
+msgstr "Nouvelle demande de support"
+
+#: functions.php:125
+msgid "night"
+msgstr "la nuit"
+
+#: inc/admin/logestay-booking-metabox.php:212
+msgid "Nights"
+msgstr "Nuits"
+
+#: functions.php:126 functions.php:222
+msgid "nights"
+msgstr "nuits"
+
+#: inc/ajax.php:39
+msgid "No accommodation available at the moment"
+msgstr "Pas de logement disponible pour le moment"
+
+#: inc/post-types/logestay-city.php:24
+msgid "No cities found in Trash."
+msgstr "Pas de villes trouvé dans la Corbeille."
+
+#: inc/post-types/logestay-city.php:23
+msgid "No cities found."
+msgstr "Pas de villes."
+
+#: template-parts/listing-item.php:124
+msgid "No commission – Direct booking"
+msgstr "Sans commission – Réservez en direct au meilleur prix"
+
+#: templates/homepage.php:477
+msgid "No FAQs found."
+msgstr "Pas de Faq trouvé."
+
+#: functions.php:234
+msgid ""
+"No payment is charged without confirmation according to the chosen method. "
+"You will receive an email with access to your client area."
+msgstr ""
+"Aucun paiement n'est débitée sans confirmation selon la méthode choisie. "
+"Vous recevrez un e-mail avec un accès à votre espace client."
+
+#: templates/homepage.php:296
+msgid "No reviews yet."
+msgstr "Pas encore de reviews."
+
+#: inc/homepage-section-listing.php:29
+msgid "Not Found SubTitle"
+msgstr "Pas Trouvé De Sous-Titres"
+
+#: inc/homepage-section-listing.php:24
+msgid "Not Found Title"
+msgstr "Pas Trouvé De Titre"
+
+#: inc/settings/page-maintenance.php:27
+msgid "Note"
+msgstr "Note"
+
+#: inc/ajax.php:141
+msgid "Notre équipe vous répondra dans un délai de 24 à 48 heures ouvrées."
+msgstr "Notre équipe vous répondra dans un délai de 24 à 48 heures ouvrées."
+
+#: functions.php:155
+msgid "November"
+msgstr "Novembre"
+
+#: functions.php:184
+msgid "Number of guests"
+msgstr "Nombre d'invités"
+
+#: functions.php:154
+msgid "October"
+msgstr "Octobre"
+
+#: inc/settings/page-payments.php:403
+msgid "Office Address"
+msgstr "Adresse Du Siège"
+
+#: inc/settings/page-payments.php:394
+msgid "Office Name"
+msgstr "Nom De Bureau"
+
+#: templates/homepage.php:331
+msgid "Open in Google Maps"
+msgstr "Ouvrir dans Google Maps"
+
+#: inc/settings/page-payments.php:412
+msgid "Opening Hours"
+msgstr "Heures D'Ouverture"
+
+#: functions.php:186 functions.php:263 templates/homepage.php:524
+msgid "or through our partners"
+msgstr "ou par l'intermédiaire de nos partenaires"
+
+#: functions.php:71 inc/ajax.php:86
+msgid "Other request"
+msgstr "Autre demande"
+
+#: functions.php:75
+msgid "Our team responds within 24 to 48 business hours."
+msgstr "Notre équipe répond dans un délai de 24 à 48 heures ouvrées."
+
+#: templates/logestay-login.php:134 templates/login-template.php:1366
+msgid "Password"
+msgstr "Mot de passe"
+
+#: inc/booking.php:345
+msgid "Payment"
+msgstr "Paiement"
+
+#: functions.php:261
+msgid "Payment cancelled"
+msgstr "Paiement annulés"
+
+#: inc/emails/email-hooks.php:239
+msgid "Payment cancelled – Booking #%d"
+msgstr ""
+
+#: inc/emails/email-hooks.php:195 inc/emails/email-hooks.php:317
+msgid "Payment confirmed"
+msgstr "Le paiement confirmé"
+
+#: inc/emails/templates/layouts/payment-pending.php:23
+msgid "Payment details"
+msgstr "Détails de paiement"
+
+#: functions.php:210
+msgid "Payment error"
+msgstr "Erreur de paiement"
+
+#: functions.php:254
+msgid "Payment error. Please try again."
+msgstr "Erreur de paiement. Merci d'essayer de nouveau."
+
+#: inc/settings/page-payments.php:433 inc/settings/page-payments.php:514
+msgid "Payment Link"
+msgstr "Lien de paiement"
+
+#: functions.php:134 functions.php:195
+msgid "Payment link"
+msgstr "Lien de paiement"
+
+#: inc/emails/email-hooks.php:251
+msgid "Payment link – Booking #%d"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:268
+msgid "Payment Method"
+msgstr "Méthode De Paiement"
+
+#: functions.php:185
+msgid "Payment method"
+msgstr "Méthode de paiement"
+
+#: inc/emails/email-hooks.php:196 inc/emails/email-hooks.php:318
+msgid "Payment not received"
+msgstr "Le paiement n'est pas reçu"
+
+#: functions.php:141
+msgid "Payment on site - Owner validation required"
+msgstr "Paiement sur place - Validation propriétaire requise"
+
+#: inc/emails/email-hooks.php:194 inc/emails/email-hooks.php:316
+#: inc/emails/templates/layouts/payment-pending.php:9
+msgid "Payment pending"
+msgstr "Paiement en attente"
+
+#: inc/emails/email-hooks.php:231
+msgid "Payment pending – Booking #%d"
+msgstr ""
+
+#: inc/emails/email-hooks.php:235
+msgid "Payment received – Booking #%d"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:273
+msgid "Payment Status"
+msgstr "L'État De Paiement"
+
+#: inc/admin/logestay-booking-metabox.php:278
+msgid "Payment Type"
+msgstr "Type De Paiement"
+
+#: inc/settings/settings.php:54 inc/settings/settings.php:55
+#: inc/settings/page-payments.php:34 inc/settings/page-payments.php:35
+msgid "Payments"
+msgstr "Les paiements"
+
+#: functions.php:131 functions.php:192 inc/settings/page-payments.php:247
+#: inc/settings/page-payments.php:511
+msgid "PayPal"
+msgstr "PayPal"
+
+#: inc/booking.php:947
+msgid "PayPal approval link missing"
+msgstr "PayPal approbation lien manquant"
+
+#: functions.php:252
+msgid "PayPal error. Please try again."
+msgstr "Erreur PayPal. Merci d'essayer de nouveau."
+
+#: inc/booking.php:862
+msgid "PayPal keys missing in settings"
+msgstr "PayPal touches manquantes dans les paramètres"
+
+#: inc/settings/page-payments.php:263
+msgid "PayPal Mode"
+msgstr "PayPal Mode"
+
+#: functions.php:173
+msgid "PayPal payment"
+msgstr "Paiement PayPal"
+
+#: functions.php:139
+msgid "PayPal payment - Instant confirmation"
+msgstr "Paiement via PayPal - Confirmation instantanée"
+
+#: inc/booking.php:886
+msgid "PayPal token missing"
+msgstr "PayPal jeton manquant"
+
+#: inc/emails/templates/layouts/payment-pending.php:14
+msgid "Pending"
+msgstr "En attendant"
+
+#: inc/admin/logestay-booking-metabox.php:175
+msgid "pending / confirmed / canceled / expired"
+msgstr "en attente / confirmé / annulées / expirées"
+
+#: functions.php:228
+msgid "Pet"
+msgstr "Animal"
+
+#: functions.php:199 inc/admin/logestay-booking-metabox.php:227
+msgid "Pets"
+msgstr "Animaux"
+
+#: functions.php:240 inc/settings/page-maintenance.php:31
+msgid "Phone"
+msgstr "Téléphone"
+
+#: functions.php:209
+msgid "Please complete all steps."
+msgstr "Veuillez compléter toutes les étapes."
+
+#: functions.php:248
+msgid "Please enter guest details."
+msgstr "Veuillez saisir les détails invité."
+
+#: inc/ajax.php:78
+msgid "Please fill all required fields correctly."
+msgstr "Veuillez remplir tous les champs correctement."
+
+#: functions.php:247
+msgid "Please select a payment method."
+msgstr "Veuillez sélectionner une méthode de paiement."
+
+#: functions.php:246
+msgid "Please select valid dates."
+msgstr "Veuillez sélectionner les dates de validité."
+
+#: functions.php:205
+msgid "Prepare exact amount if possible"
+msgstr "Préparer montant exact si possible"
+
+#: inc/admin/logestay-listing-metabox.php:220
+msgid "Price / Night"
+msgstr "Prix / Nuit"
+
+#: functions.php:264
+msgid "Price updates automatically based on your dates"
+msgstr "Le prix s'actualise automatiquement selon vos dates"
+
+#: functions.php:223 inc/admin/logestay-listing-metabox.php:217
+msgid "Pricing"
+msgstr "Tarification"
+
+#: inc/settings/page-colors.php:15
+msgid "Primary Color"
+msgstr "Couleur Primaire"
+
+#: functions.php:169
+msgid "Processing…"
+msgstr "Le traitement des..."
+
+#: functions.php:220
+msgid "Property"
+msgstr "Propriété"
+
+#: functions.php:68 inc/ajax.php:83
+msgid "Question before booking"
+msgstr "Question avant de réserver"
+
+#: inc/homepage-section-reviews.php:18
+msgid "Rating"
+msgstr "Cote"
+
+#: inc/admin/review-metabox.php:44
+msgid "Rating (0–5)"
+msgstr "Notation (de 0 à 5)"
+
+#: inc/homepage-section-hero.php:33
+msgid "Rating (example: 4.9)"
+msgstr "Note (exemple: 4.9)"
+
+#: templates/logestay-login.php:167 templates/login-template.php:1413
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+#: inc/homepage-section-hero.php:76 inc/admin/logestay-city-metabox.php:133
+#: inc/settings/settings.php:196 inc/settings/page-general.php:33
+#: inc/settings/page-general.php:47
+msgid "Remove"
+msgstr "Supprimer"
+
+#: inc/admin/logestay-booking-metabox.php:158
+msgid "Remove logestay_hold_expires_at"
+msgstr "Supprimer logestay_hold_expires_at"
+
+#: inc/post-types/logestay-review.php:16
+msgid "Review"
+msgstr "Examen"
+
+#: inc/admin/review-metabox.php:50
+msgid "Review Date"
+msgstr "Date De Révision"
+
+#: inc/admin/review-metabox.php:16
+msgid "Review Details"
+msgstr "Revue De Détails"
+
+#: inc/homepage-section-hero.php:38
+msgid "Review Text / Count"
+msgstr "L'Examen Du Texte / Le Comte"
+
+#: inc/homepage-section-reviews.php:23 inc/homepage-meta.php:202
+#: inc/post-types/logestay-review.php:15 inc/post-types/logestay-review.php:17
+msgid "Reviews"
+msgstr "Avis clients"
+
+#: inc/ajax.php:135
+msgid "Récapitulatif de votre demande :"
+msgstr "Récapitulatif de votre demande :"
+
+#: functions.php:165
+msgid "Sat"
+msgstr "Sam"
+
+#: inc/settings/page-payments.php:551
+msgid "Save Changes"
+msgstr "Enregistrer Les Modifications"
+
+#: templates/login-template.php:1437
+msgid "Se connecter"
+msgstr "Se connecter"
+
+#: inc/post-types/logestay-city.php:22
+msgid "Search Cities"
+msgstr "Recherche Villes"
+
+#: inc/post-types/logestay-listing.php:20
+msgid "Search Listings"
+msgstr "Les Listes De Recherche"
+
+#: inc/settings/page-colors.php:24
+msgid "Secondary Color"
+msgstr "La Couleur Secondaire"
+
+#: templates/login-template.php:1468
+msgid "Secure and encrypted connection"
+msgstr "Connexion sécurisée et cryptée"
+
+#: functions.php:138
+msgid "Secure card payment - Instant confirmation"
+msgstr "Paiement sécurisé par carte - Confirmation instantanée"
+
+#: functions.php:172
+msgid ""
+"Secure card payment. You will be redirected after validation to complete the "
+"payment."
+msgstr ""
+"Paiement sécurisé. Vous allez être redirigé après validation de compléter le "
+"paiement."
+
+#: functions.php:196 functions.php:218
+msgid "Secure payment - Instant confirmation"
+msgstr "Paiement sécurisé - confirmation Instantanée"
+
+#: functions.php:231
+msgid "Secure payment according to chosen method"
+msgstr "Paiement sécurisé selon la méthode choisie"
+
+#: functions.php:207
+msgid "Secure payment link"
+msgstr "Lien de paiement sécurisé"
+
+#: inc/ajax.php:67
+msgid "Security check failed."
+msgstr "Vérification de sécurité a échoué."
+
+#: functions.php:67
+msgid "Select a subject"
+msgstr "Sélectionnez un sujet"
+
+#: inc/homepage-section-destination.php:24
+msgid "Select Destinations"
+msgstr "Sélectionner Des Destinations"
+
+#: inc/admin/logestay-city-metabox.php:114
+msgid "Select Image"
+msgstr "Sélectionnez L'Image"
+
+#: functions.php:183
+msgid "Select your stay dates"
+msgstr "Sélectionnez vos dates de séjour"
+
+#: template-parts/city-itemmd.php:32 template-parts/city-item.php:34
+msgid "Selected"
+msgstr "Sélectionné"
+
+#: functions.php:232
+msgid "Selected dates are temporarily blocked"
+msgstr "Les dates choisies sont temporairement bloqués"
+
+#: functions.php:77
+msgid "Send"
+msgstr "Envoyer"
+
+#: templates/login-template.php:1562
+msgid "Send reset link"
+msgstr "Envoyer le lien de réinitialisation"
+
+#: functions.php:153
+msgid "September"
+msgstr "Septembre"
+
+#: functions.php:212
+msgid "Server error"
+msgstr "Erreur de serveur"
+
+#: functions.php:253
+msgid "Server error. Please try again."
+msgstr "Erreur de serveur. Merci d'essayer de nouveau."
+
+#: functions.php:211
+msgid "Server error. Try again."
+msgstr "Erreur de serveur. Essayez de nouveau."
+
+#: inc/ajax.php:149
+msgid "Service client"
+msgstr "Service client"
+
+#: inc/ajax.php:145
+msgid ""
+"Si votre demande est urgente ou concerne un séjour en cours, merci de le "
+"préciser clairement afin qu’elle soit traitée en priorité."
+msgstr ""
+"Si votre demande hne urgente ou concerne des nations unies séjour en cours, "
+"merci de le préciser clairement afin qu'elle soit traitée en priorité."
+
+#: templates/logestay-login.php:188
+msgid "Sign in"
+msgstr "Se connecter"
+
+#: templates/logestay-login.php:112
+msgid "Sign in to access your dashboard"
+msgstr "Se connecter pour accéder à votre tableau de bord"
+
+#: templates/login-template.php:1328
+msgid "Sign in to Loge Stay"
+msgstr "Connexion à Loge Stay"
+
+#: templates/logestay-maintenance.php:21
+msgid "Site under maintenance"
+msgstr "La maintenance du Site"
+
+#: functions.php:81
+msgid "Something went wrong. Please try again."
+msgstr "Quelque chose s'est mal passé. Merci d'essayer de nouveau."
+
+#: inc/admin/logestay-booking-metabox.php:258
+msgid "Special Requests"
+msgstr "Demandes Spéciales"
+
+#: functions.php:242
+msgid "Special requests"
+msgstr "Demandes spéciales"
+
+#: inc/booking.php:344
+msgid "Status"
+msgstr "Statut"
+
+#: functions.php:221
+msgid "Stay dates"
+msgstr "Dates du séjour"
+
+#: functions.php:224
+msgid "Stay total"
+msgstr "Total du séjour"
+
+#: inc/booking.php:507
+msgid "Stripe error"
+msgstr "Bande d'erreur"
+
+#: inc/settings/page-payments.php:173
+msgid "Stripe Mode"
+msgstr "Bande De Mode"
+
+#: inc/booking.php:438
+msgid "Stripe secret key missing in settings"
+msgstr "Bande de secret clé manquante dans les paramètres"
+
+#: functions.php:66
+msgid "Subject *"
+msgstr "Sujet *"
+
+#: inc/ajax.php:111
+msgid "Subject:"
+msgstr "Sujet:"
+
+#: inc/homepage-section-supports.php:17 inc/homepage-section-listing.php:19
+#: inc/homepage-section-destination.php:19 inc/homepage-section-location.php:17
+#: inc/homepage-section-cta.php:23 inc/homepage-section-faq.php:17
+#: inc/settings/page-maintenance.php:25
+msgid "Subtitle"
+msgstr "Sous-titres"
+
+#: inc/ajax.php:137
+msgid "Sujet :"
+msgstr "Sujet :"
+
+#: functions.php:159
+msgid "Sun"
+msgstr "Dim"
+
+#: inc/homepage-meta.php:217
+msgid "Supports"
+msgstr "Prend en charge"
+
+#: inc/admin/logestay-listing-metabox.php:236
+msgid "Sync (iCal)"
+msgstr "Sync (iCal)"
+
+#: templates/login-template.php:1263
+msgid "Sélectionner une langue"
+msgstr "Sélectionner une langue"
+
+#: inc/settings/page-payments.php:181 inc/settings/page-payments.php:271
+msgid "Test (Sandbox)"
+msgstr "Test (Sandbox)"
+
+#: inc/settings/page-payments.php:280
+msgid "Test Client ID"
+msgstr "Test d'identification de Client"
+
+#: inc/settings/page-payments.php:190
+msgid "Test Publishable Key"
+msgstr "Test Publiables Clé"
+
+#: inc/settings/page-payments.php:289
+msgid "Test Secret"
+msgstr "Test Secret"
+
+#: inc/settings/page-payments.php:199
+msgid "Test Secret Key"
+msgstr "Test De La Clé Secrète"
+
+#: inc/settings/page-payments.php:226
+msgid "Test Webhook Secret"
+msgstr "Test Webhook Secret"
+
+#: functions.php:260
+msgid ""
+"Thank you for your booking. Payment has been received. You can access your "
+"client area by email."
+msgstr ""
+"Je vous remercie pour votre réservation. Le paiement a été reçu. Vous pouvez "
+"accéder à votre espace client par e-mail."
+
+#: templates/logestay-maintenance.php:26
+msgid "Thank you for your understanding and see you soon."
+msgstr "Je vous remercie pour votre compréhension et à très bientôt."
+
+#: functions.php:265
+msgid ""
+"The cleaning fee covers the cleaning of the accommodation after your stay."
+msgstr ""
+"Les frais de ménage couvrent le nettoyage du logement après votre séjour."
+
+#: functions.php:233
+msgid "The owner will confirm your booking"
+msgstr "Le propriétaire devra confirmer votre réservation"
+
+#: functions.php:251
+msgid ""
+"The owner will confirm your booking shortly. You will receive an email "
+"confirmation."
+msgstr ""
+"Le propriétaire vous confirmerons votre réservation dans peu de temps. Vous "
+"recevrez un e-mail de confirmation."
+
+#: inc/settings/page-general.php:72 inc/settings/page-general.php:84
+#: inc/settings/page-general.php:96
+msgid "The text will be shown on the Footer"
+msgstr "Le texte sera affiché sur le Pied de page"
+
+#: inc/emails/templates/layouts/payment-pending.php:5
+msgid "there"
+msgstr "il y"
+
+#: inc/admin/logestay-booking-metabox.php:116
+msgid ""
+"These fields help you test without Stripe webhooks. You can update "
+"booking/payment statuses manually."
+msgstr ""
+"Ces champs vous aider à tester sans Rayure webhooks. Vous pouvez mettre à "
+"jour de la réservation/paiement statuts manuellement."
+
+#: templates/logestay-maintenance.php:23
+msgid ""
+"This site is currently undergoing maintenance to improve your experience. "
+"This interruption is temporary."
+msgstr ""
+"Ce site est actuellement en maintenance afin d'améliorer votre expérience. "
+"Cette interruption temporaire."
+
+#: functions.php:163
+msgid "Thu"
+msgstr "Jeu"
+
+#: inc/homepage-meta.php:178
+msgid ""
+"Tip: Set this page as the Front page (Settings → Reading) or use the "
+"\"homepage.php\" template to enable homepage fields."
+msgstr ""
+
+#: inc/homepage-section-supports.php:12 inc/homepage-section-listing.php:14
+#: inc/homepage-section-destination.php:14 inc/homepage-section-location.php:12
+#: inc/homepage-section-cta.php:18 inc/homepage-section-reviews.php:13
+#: inc/homepage-section-faq.php:12 inc/settings/page-maintenance.php:24
+msgid "Title"
+msgstr "Titre"
+
+#: templates/logestay-login.php:151
+msgid "Toggle password"
+msgstr "Passe à bascule"
+
+#: inc/booking.php:151
+msgid "Too many adults for this listing."
+msgstr "Trop d'adultes pour cette inscription."
+
+#: inc/booking.php:154
+msgid "Too many children for this listing."
+msgstr "Trop d'enfants pour cette inscription."
+
+#: inc/booking.php:157
+msgid "Too many pets for this listing."
+msgstr "Trop d'animaux de compagnie pour cette inscription."
+
+#: inc/admin/logestay-booking-metabox.php:263
+msgid "Total Amount"
+msgstr "Montant Total"
+
+#: inc/admin/logestay-booking-metabox.php:283
+msgid "Transaction ID"
+msgstr "ID de Transaction"
+
+#: functions.php:140
+msgid "Transfer - Validation after receipt"
+msgstr "Virement - Validation après réception"
+
+#: templates/homepage.php:187
+msgid "traveler reviews"
+msgstr "les avis des clients"
+
+#: functions.php:161
+msgid "Tue"
+msgstr "Mar"
+
+#: templates/login-template.php:1540
+msgid "Une erreur est survenue. Veuillez réessayer."
+msgstr "Une erreur hne survenue. Veuillez réessayer."
+
+#: inc/admin/logestay-booking-metabox.php:121
+msgid "Update Booking Status"
+msgstr "Mise À Jour Le Statut De La Réservation"
+
+#: inc/admin/logestay-booking-metabox.php:138
+msgid "Update Payment Status"
+msgstr "Mise À Jour De Statut De Paiement"
+
+#: inc/settings/page-general.php:48
+msgid "Upload/select a logo for email header"
+msgstr "Télécharger/sélectionnez un logo pour l'adresse e-mail"
+
+#: inc/settings/page-general.php:34
+msgid "Upload/select a logo. (Stores attachment ID)"
+msgstr "Télécharger/sélectionner un logo. (Magasins ID de pièce jointe)"
+
+#: inc/settings/page-payments.php:184 inc/settings/page-payments.php:274
+msgid "Use Test during development. Switch to Live only when ready."
+msgstr ""
+"Test d'usage au cours du développement. Commutateur de ne Vivre que quand "
+"tout est prêt."
+
+#: templates/login-template.php:1350
+msgid "Username or email address"
+msgstr "Identifiant ou adresse e-mail"
+
+#: inc/emails/templates/layouts/payment-pending.php:33
+msgid "via"
+msgstr "via"
+
+#: templates/homepage.php:76
+#, php-format
+msgid "View %s"
+msgstr "Vue de %s"
+
+#: template-parts/listing-item.php:122
+msgid "View availability"
+msgstr "Voir les disponibilités"
+
+#: inc/post-types/logestay-city.php:21
+msgid "View City"
+msgstr "Vue De La Ville De"
+
+#: inc/post-types/logestay-listing.php:19
+msgid "View Listing"
+msgstr "Vue Liste"
+
+#: inc/default-page.php:63
+msgid "Visitors will only see the default page until you disable it."
+msgstr ""
+"Les visiteurs ne verrez que la page par défaut jusqu'à ce que vous "
+"désactivez-le."
+
+#: inc/ajax.php:133
+msgid "Votre demande a bien été reçue par notre équipe support."
+msgstr "Votre demande a bien été reçue par notre équipe de soutien."
+
+#: functions.php:80
+msgid "We have received your request and will respond as soon as possible."
+msgstr ""
+"Nous avons bien reçu votre demande et vous répondrons dès que possible."
+
+#: inc/ajax.php:129
+msgid "We received your request"
+msgstr "Nous avons bien reçu votre demande"
+
+#: templates/logestay-maintenance.php:22
+msgid "We will be back very soon"
+msgstr "Nous serons de retour très bientôt"
+
+#: functions.php:162
+msgid "Wed"
+msgstr "Mer"
+
+#: templates/logestay-login.php:109
+msgid "Welcome back"
+msgstr "Bienvenue"
+
+#: inc/settings/page-maintenance.php:30
+msgid "WhatsApp Link"
+msgstr "WhatsApp Lien"
+
+#: inc/settings/page-general.php:60
+msgid "Where contact form messages will be sent."
+msgstr "Où formulaire de contact, les messages seront envoyés."
+
+#: inc/emails/templates/partials/email-footer.php:12
+msgid "You received this email because you made a booking on LOGESTAY."
+msgstr ""
+"Vous avez reçu cet email car vous avez fait une réservation sur LOGESTAY."
+
+#: functions.php:174
+msgid "You will be redirected to PayPal after validation."
+msgstr "Vous allez être redirigé vers PayPal après validation."
+
+#: functions.php:257
+msgid ""
+"Your booking request is registered. The owner will confirm your stay. You "
+"will receive an email with payment instructions."
+msgstr ""
+"Votre demande de réservation est enregistrée. Le propriétaire devra "
+"confirmer votre séjour. Vous recevrez un e-mail avec les instructions de "
+"paiement."
+
+#: functions.php:235
+msgid "Your details"
+msgstr "Vos coordonnées"
+
+#: functions.php:63
+msgid "Your first name"
+msgstr "Votre prénom"
+
+#: inc/emails/templates/layouts/payment-pending.php:27
+msgid "Your payment is being processed."
+msgstr "Votre paiement est en cours de traitement."
+
+#: functions.php:262
+msgid ""
+"Your payment was cancelled and no charge was made. You can restart your "
+"booking at any time."
+msgstr ""
+"Votre paiement a été annulé et aucune charge n'a été faite. Vous pouvez "
+"redémarrer votre réservation à tout moment."
+
+#: functions.php:219
+msgid "Your stay summary"
+msgstr "Votre séjour résumé"
+
+#: functions.php:65 templates/login-template.php:1358
+msgid "your@email.com"
+msgstr "votre@email.com"
+
+#: inc/ajax.php:147
+msgid "À très bientôt,"
+msgstr "À très bientôt,"
+
+#: inc/admin/logestay-listing-metabox.php:155
+msgid "— Select City —"
+msgstr "— Sélectionnez La Ville —"
+
+#: inc/admin/logestay-listing-metabox.php:298
+msgid "— Select from presets —"
+msgstr "— Sélectionnez à partir de presets —"
+
+#: templates/login-template.php:1375
+msgid "••••••••"
+msgstr "••••••••"
+
+#: templates/logestay-maintenance.php:24 templates/logestay-maintenance.php:25
+msgid ""
+"🔧 Technical update in progress.\n"
+"Thank you for your patience."
+msgstr ""

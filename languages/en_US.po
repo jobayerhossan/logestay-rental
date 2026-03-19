@@ -1,0 +1,844 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Logestay Rental\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-16 21:50+0000\n"
+"PO-Revision-Date: 2026-01-16 21:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.1; wp-6.9; php-8.2.4\n"
+"X-Domain: logestay"
+
+#: inc/settings/page-payments.php:387
+msgid ""
+"A secure payment link will be sent to you by SMS and email after validation."
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:250
+msgid "Add / Manage Images"
+msgstr ""
+
+#: inc/homepage-section-hero.php:61
+msgid "Add / Select Images"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:302
+msgid "Add custom"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:141
+msgid "Add Nearby Place"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:17
+msgid "Add New"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:18
+msgid "Add New City"
+msgstr ""
+
+#: inc/post-types/logestay-listing.php:17
+msgid "Add New Listing"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:287
+msgid "Add preset"
+msgstr ""
+
+#: inc/homepage-section-hero.php:55
+msgid "Add unlimited images. Drag & drop to reorder."
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:113
+msgid "Admin Actions (Optional)"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:216
+msgid "Adults"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:219
+msgid "Airbnb iCal URL"
+msgstr ""
+
+#: inc/settings/page-general.php:36
+msgid "Airbnb Link"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:233
+msgid "Airbnb Listing Link"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:265
+#: inc/post-types/logestay-amenity.php:15
+#: inc/post-types/logestay-amenity.php:17
+msgid "Amenities"
+msgstr ""
+
+#: inc/post-types/logestay-amenity.php:16
+msgid "Amenity"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:159
+msgid "Assign this listing to a destination city."
+msgstr ""
+
+#: inc/settings/page-payments.php:445
+msgid "Bank"
+msgstr ""
+
+#: inc/settings/page-payments.php:309
+msgid "Bank Note (email text)"
+msgstr ""
+
+#: inc/settings/page-payments.php:266
+msgid "Bank Transfer"
+msgstr ""
+
+#: inc/emails/email-hooks.php:243
+msgid "Bank transfer instructions – Booking #%d"
+msgstr ""
+
+#: inc/settings/page-payments.php:282
+msgid "Beneficiary"
+msgstr ""
+
+#: inc/settings/page-payments.php:300
+msgid "BIC"
+msgstr ""
+
+#: inc/booking.php:279 inc/post-types/logestay-booking.php:16
+msgid "Booking"
+msgstr ""
+
+#: inc/emails/email-hooks.php:202 inc/emails/email-hooks.php:324
+msgid "Booking cancelled"
+msgstr ""
+
+#: inc/emails/email-hooks.php:201 inc/emails/email-hooks.php:323
+msgid "Booking confirmed"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:13
+msgid "Booking Details"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:223
+msgid "Booking iCal URL"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:167
+msgid "Booking ID"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:237
+msgid "Booking Listing Link"
+msgstr ""
+
+#: inc/emails/email-hooks.php:200 inc/emails/email-hooks.php:322
+msgid "Booking pending"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:172
+msgid "Booking Status"
+msgstr ""
+
+#: inc/emails/email-hooks.php:329 inc/emails/email-hooks.php:330
+msgid "Booking update"
+msgstr ""
+
+#: inc/settings/page-general.php:54
+msgid "Booking.com Link"
+msgstr ""
+
+#: inc/post-types/logestay-booking.php:15
+#: inc/post-types/logestay-booking.php:17
+msgid "Bookings"
+msgstr ""
+
+#: inc/homepage-section-hero.php:48
+msgid "Button Link"
+msgstr ""
+
+#: inc/homepage-section-hero.php:43
+msgid "Button Text"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:164
+msgid "Capacity & Limits"
+msgstr ""
+
+#: inc/settings/page-payments.php:446
+msgid "Cash"
+msgstr ""
+
+#: inc/settings/page-payments.php:321
+msgid "Cash Payment"
+msgstr ""
+
+#: inc/emails/email-hooks.php:247
+msgid "Cash payment instructions – Booking #%d"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:201
+msgid "Check-in"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:206
+msgid "Check-out"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:221
+msgid "Children"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:15 inc/post-types/logestay-city.php:25
+msgid "Cities"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:150
+#: inc/post-types/logestay-city.php:16
+msgid "City"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:16
+msgid "City Location & Nearby"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:191
+msgid "City:"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:201
+msgid "Cleaning Fee"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:253
+msgid "Clear"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:154
+msgid "Clear Hold Expiry"
+msgstr ""
+
+#: inc/settings/settings.php:45 inc/settings/settings.php:46
+msgid "Colors"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:40
+msgid "Complete payment"
+msgstr ""
+
+#: inc/settings/page-general.php:15
+msgid "Contact Form Email"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:44
+msgid "Contact support"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:282
+msgid "Created At"
+msgstr ""
+
+#: inc/homepage-meta.php:222
+msgid "CTA"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:209
+msgid "Currency"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:293
+msgid "Custom label (e.g. WC séparés)"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Custom WordPress theme converted from a React/Vite build. Step 1: "
+"header/footer shell + enqueue compiled CSS/JS. Menus via WP; header/footer "
+"text via Customizer."
+msgstr ""
+
+#: inc/booking.php:281
+msgid "Dates"
+msgstr ""
+
+#: inc/homepage-meta.php:192
+msgid "Destination"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:255
+msgid "Drag to reorder. Click × to remove."
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:308
+msgid "Drag to reorder. You can mix presets and custom items."
+msgstr ""
+
+#: inc/post-types/logestay-city.php:19
+msgid "Edit City"
+msgstr ""
+
+#: inc/post-types/logestay-listing.php:18
+msgid "Edit Listing"
+msgstr ""
+
+#: inc/settings/page-payments.php:273
+msgid "Enable Bank Transfer"
+msgstr ""
+
+#: inc/settings/page-payments.php:328
+msgid "Enable Cash Payment"
+msgstr ""
+
+#: inc/settings/page-payments.php:146
+msgid "Enable Credit Card"
+msgstr ""
+
+#: inc/settings/page-payments.php:374
+msgid "Enable Payment Link"
+msgstr ""
+
+#: inc/settings/page-payments.php:236
+msgid "Enable PayPal"
+msgstr ""
+
+#: inc/settings/settings.php:126
+msgid "Enabled"
+msgstr ""
+
+#: inc/homepage-section-destination.php:29
+msgid "Example: Cox’s Bazar, Sylhet, Saint Martin"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:230
+msgid "External Links"
+msgstr ""
+
+#: inc/homepage-meta.php:212 inc/post-types/logestay-faq.php:16
+#: inc/post-types/logestay-faq.php:17
+msgid "FAQ"
+msgstr ""
+
+#: inc/post-types/logestay-faq.php:15
+msgid "FAQs"
+msgstr ""
+
+#: inc/homepage-section-destination.php:32
+msgid ""
+"For now this is a simple text field. Later we can convert it to a post "
+"selector / taxonomy selector."
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:244
+msgid "Gallery"
+msgstr ""
+
+#: inc/settings/settings.php:36 inc/settings/settings.php:37
+msgid "General"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:79
+msgid "Google Map Embed URL (iframe src)"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:87
+msgid "Google Map Open Link"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:236
+msgid "Guest Email"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:231
+msgid "Guest Name"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:247
+msgid "Guest Phone"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:4
+msgid "Hello"
+msgstr ""
+
+#: inc/homepage-meta.php:187
+msgid "Hero"
+msgstr ""
+
+#: inc/homepage-section-hero.php:20
+msgid "Hero Content"
+msgstr ""
+
+#: inc/homepage-section-hero.php:54
+msgid "Hero Slides"
+msgstr ""
+
+#: inc/homepage-section-hero.php:28
+msgid "Hero Subtitle"
+msgstr ""
+
+#: inc/homepage-section-hero.php:23
+msgid "Hero Title"
+msgstr ""
+
+#: inc/booking.php:284
+msgid "Hold expires"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:178
+msgid "Hold Expires At"
+msgstr ""
+
+#. Name of the template
+#: templates/homepage.php:2
+msgid "Homepage"
+msgstr ""
+
+#: inc/homepage-meta.php:44
+msgid "Homepage – Content Settings"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://jobayerhossan.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://logestay.com"
+msgstr ""
+
+#: inc/settings/page-payments.php:291
+msgid "IBAN"
+msgstr ""
+
+#: functions.php:10
+msgid "Information"
+msgstr ""
+
+#. Author of the theme
+msgid "Jobayer"
+msgstr ""
+
+#: inc/booking.php:280 inc/homepage-meta.php:197
+#: inc/admin/logestay-booking-metabox.php:183
+#: inc/post-types/logestay-listing.php:16
+msgid "Listing"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:13
+msgid "Listing Settings"
+msgstr ""
+
+#: inc/post-types/logestay-listing.php:15
+#: inc/post-types/logestay-listing.php:21
+msgid "Listings"
+msgstr ""
+
+#: inc/settings/page-payments.php:164
+msgid "Live (Production)"
+msgstr ""
+
+#: inc/settings/page-payments.php:190
+msgid "Live Publishable Key"
+msgstr ""
+
+#: inc/settings/page-payments.php:199
+msgid "Live Secret Key"
+msgstr ""
+
+#: inc/settings/page-payments.php:217
+msgid "Live Webhook Secret"
+msgstr ""
+
+#: inc/homepage-meta.php:207
+msgid "Locations"
+msgstr ""
+
+#: inc/settings/settings.php:24 inc/settings/settings.php:25
+msgid "LOGE STAY"
+msgstr ""
+
+#: inc/settings/page-colors.php:36
+msgid "LOGE STAY – Colors"
+msgstr ""
+
+#: inc/settings/page-general.php:66
+msgid "LOGE STAY – General"
+msgstr ""
+
+#: inc/settings/page-payments.php:440
+msgid "LOGE STAY – Payments"
+msgstr ""
+
+#. Name of the theme
+msgid "Logestay Rental"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:167
+msgid "Max Adults"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:171
+msgid "Max Children"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:186
+msgid "Max Nights"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:175
+msgid "Max Pets"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:182
+msgid "Min Nights"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:97
+msgid "Nearby Places"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:20
+msgid "New City"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:211
+msgid "Nights"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:24
+msgid "No cities found in Trash."
+msgstr ""
+
+#: inc/post-types/logestay-city.php:23
+msgid "No cities found."
+msgstr ""
+
+#: inc/settings/page-payments.php:346
+msgid "Office Address"
+msgstr ""
+
+#: inc/settings/page-payments.php:337
+msgid "Office Name"
+msgstr ""
+
+#: inc/settings/page-payments.php:355
+msgid "Opening Hours"
+msgstr ""
+
+#: inc/booking.php:283
+msgid "Payment"
+msgstr ""
+
+#: inc/emails/email-hooks.php:239
+msgid "Payment cancelled – Booking #%d"
+msgstr ""
+
+#: inc/emails/email-hooks.php:195 inc/emails/email-hooks.php:317
+msgid "Payment confirmed"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:23
+msgid "Payment details"
+msgstr ""
+
+#: inc/settings/page-payments.php:367 inc/settings/page-payments.php:447
+msgid "Payment Link"
+msgstr ""
+
+#: inc/settings/page-payments.php:383
+msgid "Payment Link Note (email text)"
+msgstr ""
+
+#: inc/emails/email-hooks.php:251
+msgid "Payment link – Booking #%d"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:262
+msgid "Payment Method"
+msgstr ""
+
+#: inc/emails/email-hooks.php:196 inc/emails/email-hooks.php:318
+msgid "Payment not received"
+msgstr ""
+
+#: inc/emails/email-hooks.php:194 inc/emails/email-hooks.php:316
+#: inc/emails/templates/layouts/payment-pending.php:9
+msgid "Payment pending"
+msgstr ""
+
+#: inc/emails/email-hooks.php:231
+msgid "Payment pending – Booking #%d"
+msgstr ""
+
+#: inc/emails/email-hooks.php:235
+msgid "Payment received – Booking #%d"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:267
+msgid "Payment Status"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:272
+msgid "Payment Type"
+msgstr ""
+
+#: inc/settings/settings.php:54 inc/settings/settings.php:55
+#: inc/settings/page-payments.php:34 inc/settings/page-payments.php:35
+msgid "Payments"
+msgstr ""
+
+#: inc/settings/page-payments.php:229 inc/settings/page-payments.php:444
+msgid "PayPal"
+msgstr ""
+
+#: inc/settings/page-payments.php:245
+msgid "PayPal Email"
+msgstr ""
+
+#: inc/settings/page-payments.php:254
+msgid "PayPal Note (email text)"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:14
+msgid "Pending"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:174
+msgid "pending / confirmed / canceled / expired"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:226
+msgid "Pets"
+msgstr ""
+
+#: inc/settings/page-payments.php:313
+msgid "Please include the booking reference in the transfer description."
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:197
+msgid "Price / Night"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:194
+msgid "Pricing"
+msgstr ""
+
+#: inc/settings/page-colors.php:15
+msgid "Primary Color"
+msgstr ""
+
+#: functions.php:8
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/admin/review-metabox.php:44
+msgid "Rating (0–5)"
+msgstr ""
+
+#: inc/homepage-section-hero.php:33
+msgid "Rating (example: 4.9)"
+msgstr ""
+
+#: inc/homepage-section-hero.php:76 inc/admin/logestay-city-metabox.php:133
+msgid "Remove"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:157
+msgid "Remove logestay_hold_expires_at"
+msgstr ""
+
+#: inc/post-types/logestay-review.php:16
+msgid "Review"
+msgstr ""
+
+#: inc/admin/review-metabox.php:50
+msgid "Review Date"
+msgstr ""
+
+#: inc/admin/review-metabox.php:16
+msgid "Review Details"
+msgstr ""
+
+#: inc/homepage-section-hero.php:38
+msgid "Review Text / Count"
+msgstr ""
+
+#: inc/homepage-meta.php:202 inc/post-types/logestay-review.php:15
+#: inc/post-types/logestay-review.php:17
+msgid "Reviews"
+msgstr ""
+
+#: inc/settings/page-payments.php:483
+msgid "Save Changes"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:22
+msgid "Search Cities"
+msgstr ""
+
+#: inc/post-types/logestay-listing.php:20
+msgid "Search Listings"
+msgstr ""
+
+#: inc/settings/page-colors.php:24
+msgid "Secondary Color"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:205
+msgid "Security Deposit"
+msgstr ""
+
+#: inc/homepage-section-destination.php:23
+msgid "Select Destinations (text for now)"
+msgstr ""
+
+#: inc/admin/logestay-city-metabox.php:114
+msgid "Select Image"
+msgstr ""
+
+#: functions.php:9
+msgid "Services"
+msgstr ""
+
+#: inc/settings/page-general.php:27
+msgid "Show Airbnb Button"
+msgstr ""
+
+#: inc/settings/page-general.php:45
+msgid "Show Booking.com Button"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:252
+msgid "Special Requests"
+msgstr ""
+
+#: inc/booking.php:282
+msgid "Status"
+msgstr ""
+
+#: inc/settings/page-payments.php:139 inc/settings/page-payments.php:443
+msgid "Stripe"
+msgstr ""
+
+#: inc/settings/page-payments.php:155
+msgid "Stripe Mode"
+msgstr ""
+
+#: inc/homepage-section-faq.php:17 inc/homepage-section-cta.php:17
+#: inc/homepage-section-reviews.php:17 inc/homepage-section-destination.php:18
+#: inc/homepage-section-location.php:17 inc/homepage-section-supports.php:17
+#: inc/homepage-section-listing.php:17
+msgid "Subtitle"
+msgstr ""
+
+#: inc/homepage-meta.php:217
+msgid "Supports"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:216
+msgid "Sync (iCal)"
+msgstr ""
+
+#: inc/settings/page-payments.php:163
+msgid "Test (Sandbox)"
+msgstr ""
+
+#: inc/settings/page-payments.php:172
+msgid "Test Publishable Key"
+msgstr ""
+
+#: inc/settings/page-payments.php:181
+msgid "Test Secret Key"
+msgstr ""
+
+#: inc/settings/page-payments.php:208
+msgid "Test Webhook Secret"
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:5
+msgid "there"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:115
+msgid ""
+"These fields help you test without Stripe webhooks. You can update "
+"booking/payment statuses manually."
+msgstr ""
+
+#: inc/homepage-meta.php:178
+msgid ""
+"Tip: Set this page as the Front page (Settings → Reading) or use the "
+"\"homepage.php\" template to enable homepage fields."
+msgstr ""
+
+#: inc/homepage-section-faq.php:12 inc/homepage-section-cta.php:12
+#: inc/homepage-section-reviews.php:12 inc/homepage-section-destination.php:13
+#: inc/homepage-section-location.php:12 inc/homepage-section-supports.php:12
+#: inc/homepage-section-listing.php:12
+msgid "Title"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:257
+msgid "Total Amount"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:277
+msgid "Transaction ID"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:120
+msgid "Update Booking Status"
+msgstr ""
+
+#: inc/admin/logestay-booking-metabox.php:137
+msgid "Update Payment Status"
+msgstr ""
+
+#: inc/settings/page-payments.php:166
+msgid "Use Test during development. Switch to Live only when ready."
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:33
+msgid "via"
+msgstr ""
+
+#: inc/post-types/logestay-city.php:21
+msgid "View City"
+msgstr ""
+
+#: inc/post-types/logestay-listing.php:19
+msgid "View Listing"
+msgstr ""
+
+#: inc/settings/page-general.php:21
+msgid "Where contact form messages will be sent."
+msgstr ""
+
+#: inc/emails/templates/partials/email-footer.php:9
+msgid "You received this email because you made a booking on LOGESTAY."
+msgstr ""
+
+#: inc/settings/page-payments.php:258
+msgid "You will be redirected to PayPal after validation."
+msgstr ""
+
+#: inc/emails/templates/layouts/payment-pending.php:27
+msgid "Your payment is being processed."
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:152
+msgid "— Select City —"
+msgstr ""
+
+#: inc/admin/logestay-listing-metabox.php:278
+msgid "— Select from presets —"
+msgstr ""
