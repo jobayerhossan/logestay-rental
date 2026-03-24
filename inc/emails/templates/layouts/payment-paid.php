@@ -10,19 +10,17 @@
 
 <div style="margin:14px 0 18px;">
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#D1FAE5;color:#065F46;font-weight:800;font-size:12px;margin-right:8px;">
-    ✔ Payé
+    Payé
   </span>
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#D1FAE5;color:#065F46;font-weight:800;font-size:12px;">
-    ✔ Confirmée
+    Confirmée
   </span>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E5EEF9;border-radius:14px;padding:16px;">
   <div style="display:flex;gap:12px;align-items:flex-start;">
-    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:flex;align-items:center;justify-content:center;font-weight:800;color:#9A3412;">
-      💳
-    </div>
+    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:flex;align-items:center;justify-content:center;font-weight:800;color:#9A3412;"></div>
     <div style="flex:1;">
       <p style="margin:0 0 4px;font-weight:900;color:#111827;">Détails du paiement</p>
       <p style="margin:0 0 10px;color:#475569;font-size:14px;line-height:1.5;">
@@ -40,9 +38,7 @@
 <!-- Stay card -->
 <div style="margin-top:16px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:14px;padding:18px;">
   <div style="display:flex;gap:12px;align-items:flex-start;">
-    <div style="width:44px;height:44px;border-radius:999px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-weight:800;color:#1D4ED8;">
-      📍
-    </div>
+    <div style="width:44px;height:44px;border-radius:999px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-weight:800;color:#1D4ED8;"></div>
     <div style="flex:1;">
       <p style="margin:0;font-weight:900;font-size:18px;color:#0F172A;">Votre séjour</p>
       <p style="margin:10px 0 0;font-weight:900;color:#0F172A;"><?php echo esc_html($listing_title); ?></p>
@@ -58,7 +54,7 @@
     <div style="min-width:220px;">
       <p style="margin:0;color:#64748B;font-size:11px;letter-spacing:.06em;">DATES</p>
       <p style="margin:6px 0 0;font-weight:900;color:#0F172A;">
-        <?php echo esc_html($check_in); ?> → <?php echo esc_html($check_out); ?>
+        <?php echo esc_html($check_in_with_time ?: $check_in); ?> → <?php echo esc_html($check_out_with_time ?: $check_out); ?>
       </p>
     </div>
 
@@ -84,7 +80,7 @@
 </div>
 
 <div style="margin-top:16px;background:#DCFCE7;border:1px solid #86EFAC;border-radius:14px;padding:14px;color:#065F46;font-weight:800;">
-  ✅ Bon séjour ! Merci pour votre confiance. Nous sommes ravis de vous accueillir avec LOGESTAY.
+  Bon séjour ! Merci pour votre confiance. Nous sommes ravis de vous accueillir avec LOGESTAY.
 </div>
 
 <hr style="border:none;border-top:1px solid #E5E7EB;margin:22px 0;">

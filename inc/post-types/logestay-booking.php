@@ -189,4 +189,44 @@ add_action( 'init', function () {
 		'show_in_rest'      => true,
 		'auth_callback'     => $auth,
 	] );
+
+	register_post_meta( 'logestay_booking', 'logestay_keybox_code', [
+		'type'              => 'string',
+		'single'            => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'show_in_rest'      => true,
+		'auth_callback'     => $auth,
+	] );
+
+	register_post_meta( 'logestay_booking', 'logestay_arrival_instructions_sent_at', [
+		'type'              => 'string',
+		'single'            => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'show_in_rest'      => true,
+		'auth_callback'     => $auth,
+	] );
+
+	register_post_meta( 'logestay_booking', 'logestay_arrival_instructions_sent_source', [
+		'type'              => 'string',
+		'single'            => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'show_in_rest'      => true,
+		'auth_callback'     => $auth,
+	] );
+
+	register_post_meta( 'logestay_booking', 'logestay_checkout_reminder_sent_at', [
+		'type'              => 'string',
+		'single'            => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'show_in_rest'      => true,
+		'auth_callback'     => $auth,
+	] );
+
+	register_post_meta( 'logestay_booking', 'logestay_post_stay_email_sent_at', [
+		'type'              => 'string',
+		'single'            => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'show_in_rest'      => true,
+		'auth_callback'     => $auth,
+	] );
 } );

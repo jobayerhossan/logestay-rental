@@ -4,8 +4,8 @@ $title_h1     = 'Paiement confirmé';
 $details_text = "Votre paiement via le lien sécurisé a été validé.";
 $payment_method_label = 'lien de paiement';
 
-$badge_payment = ['text'=>'Payé', 'bg'=>'#D1FAE5', 'color'=>'#065F46', 'icon'=>'✅'];
-$badge_booking = ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E', 'icon'=>'⏳'];
+$badge_payment = ['text'=>'Payé', 'bg'=>'#D1FAE5', 'color'=>'#065F46'];
+$badge_booking = ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E'];
 
 $show_cta = false;
 

@@ -50,11 +50,13 @@ $pay_url       = (string) ($pay_url ?? home_url('/'));
 $site_url      = (string) ($site_url ?? home_url('/'));
 
 $email_title        = (string) ($email_title ?? 'Paiement en attente');
+$email_status_subtitle = (string) ($email_status_subtitle ?? '');
 $email_payment_text = (string) ($email_payment_text ?? "Votre paiement par carte bancaire est en cours de traitement.");
 $email_method_label = (string) ($email_method_label ?? 'carte bancaire');
+$email_amount_suffix = (string) ($email_amount_suffix ?? ('via ' . $email_method_label));
 
-$email_badge_payment = is_array($email_badge_payment ?? null) ? $email_badge_payment : ['text'=>'En attente','tone'=>'warning'];
-$email_badge_booking = is_array($email_badge_booking ?? null) ? $email_badge_booking : ['text'=>'En attente','tone'=>'warning'];
+$email_badge_payment = ($email_badge_payment === false) ? false : (is_array($email_badge_payment ?? null) ? $email_badge_payment : ['text'=>'En attente','tone'=>'warning']);
+$email_badge_booking = ($email_badge_booking === false) ? false : (is_array($email_badge_booking ?? null) ? $email_badge_booking : ['text'=>'En attente','tone'=>'warning']);
 
 $email_cta_primary   = ($email_cta_primary === false) ? false : (is_array($email_cta_primary ?? null) ? $email_cta_primary : [
 	'label' => 'Finaliser le paiement',
@@ -83,19 +85,27 @@ $host       = parse_url($site_url, PHP_URL_HOST) ?: 'www.logestay.com';
 	<?php echo esc_html($email_title); ?>
 </h2>
 
+<?php if ( $email_status_subtitle !== '' ) : ?>
+	<p style="margin:0 0 14px;color:#64748B;font-size:13px;font-weight:700;line-height:1.5;">
+		<?php echo esc_html($email_status_subtitle); ?>
+	</p>
+<?php endif; ?>
+
 <div style="margin:12px 0 18px;">
 	<?php
-		echo logestay_email_badge_html($email_badge_payment);
-		echo logestay_email_badge_html($email_badge_booking);
+		if ( is_array($email_badge_payment) ) {
+			echo logestay_email_badge_html($email_badge_payment);
+		}
+		if ( is_array($email_badge_booking) ) {
+			echo logestay_email_badge_html($email_badge_booking);
+		}
 	?>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E5EEF9;border-radius:14px;padding:18px;">
 	<div style="display:flex;gap:14px;align-items:flex-start;">
-		<div style="width:46px;height:46px;border-radius:999px;background:#FFEDD5;display:inline;align-items:center;justify-content:center;font-weight:900;color:#9A3412;  line-height: 46px;
-  text-align: center;">
-			💳
+		<div style="width:46px;height:46px;border-radius:999px;background:#FFEDD5;display:inline-block;border:1px solid #FDBA74;">
 		</div>
 
 		<div style="flex:1;min-width:0;">
@@ -106,7 +116,7 @@ $host       = parse_url($site_url, PHP_URL_HOST) ?: 'www.logestay.com';
 
 			<div style="font-size:34px;font-weight:900;color:#0F172A;">
 				<?php echo $amount_str; ?> <?php echo esc_html($cur_sym); ?>
-				<span style="font-size:14px;font-weight:800;color:#64748B;">via <?php echo esc_html($email_method_label); ?></span>
+				<span style="font-size:14px;font-weight:800;color:#64748B;"><?php echo esc_html($email_amount_suffix); ?></span>
 			</div>
 		</div>
 	</div>

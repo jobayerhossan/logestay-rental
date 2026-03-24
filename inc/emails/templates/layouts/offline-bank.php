@@ -10,19 +10,17 @@
 
 <div style="margin:14px 0 18px;">
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#FEF3C7;color:#92400E;font-weight:700;font-size:12px;margin-right:8px;">
-    ⏳ En attente
+    En attente
   </span>
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#D1FAE5;color:#065F46;font-weight:700;font-size:12px;">
-    ✅ Confirmée
+    Confirmée
   </span>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E5EEF9;border-radius:14px;padding:16px;">
   <div style="display:flex;gap:12px;align-items:flex-start;">
-    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:flex;align-items:center;justify-content:center;font-weight:800;color:#9A3412;">
-      💳
-    </div>
+    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:flex;align-items:center;justify-content:center;font-weight:800;color:#9A3412;"></div>
     <div style="flex:1;">
       <p style="margin:0 0 4px;font-weight:800;color:#111827;">Détails du paiement</p>
       <p style="margin:0 0 10px;color:#475569;font-size:14px;line-height:1.5;">

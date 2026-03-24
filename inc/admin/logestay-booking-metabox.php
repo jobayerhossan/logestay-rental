@@ -16,6 +16,15 @@ add_action( 'add_meta_boxes', function () {
 		'normal',
 		'high'
 	);
+
+	add_meta_box(
+		'logestay_booking_email_history',
+		__( 'Email History', 'logestay' ),
+		'logestay_render_booking_email_history_meta_box',
+		'logestay_booking',
+		'side',
+		'default'
+	);
 } );
 
 add_action( 'admin_enqueue_scripts', function ( $hook ) {
@@ -34,6 +43,9 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 		.logestay-muted { color:#646970; font-size:12px; margin-top:4px; }
 		.logestay-actions { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; }
 		.logestay-actions .logestay-field { flex: 1; min-width: 220px; }
+		.logestay-email-history { margin:0; padding:0; list-style:none; }
+		.logestay-email-history li { margin:0 0 12px; padding:0 0 12px; border-bottom:1px solid #dcdcde; }
+		.logestay-email-history li:last-child { margin-bottom:0; padding-bottom:0; border-bottom:0; }
 	' );
 } );
 
@@ -56,6 +68,43 @@ function logestay_format_meta_value( $v ): string {
 	if ( is_bool( $v ) ) return $v ? 'true' : 'false';
 	return (string) $v;
 }
+
+function logestay_set_booking_admin_notice( string $code ): void {
+	$GLOBALS['logestay_booking_admin_notice'] = $code;
+}
+
+add_filter( 'redirect_post_location', function ( $location ) {
+	$notice = $GLOBALS['logestay_booking_admin_notice'] ?? '';
+	if ( $notice === '' ) {
+		return $location;
+	}
+
+	return add_query_arg( 'logestay_booking_notice', rawurlencode( $notice ), $location );
+} );
+
+add_action( 'admin_notices', function () {
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	if ( ! $screen || 'logestay_booking' !== $screen->post_type ) return;
+
+	$notice = sanitize_text_field( $_GET['logestay_booking_notice'] ?? '' );
+	if ( $notice === '' ) return;
+
+	$map = [
+		'booking_confirmed_paid'   => [ 'type' => 'success', 'text' => __( 'Booking marked as confirmed and payment marked as paid.', 'logestay' ) ],
+		'arrival_sent_manual'      => [ 'type' => 'success', 'text' => __( 'Arrival instructions sent manually to the guest.', 'logestay' ) ],
+		'arrival_sent_manual_again'=> [ 'type' => 'warning', 'text' => __( 'Arrival instructions were already sent before and have now been sent again manually.', 'logestay' ) ],
+		'arrival_send_failed'      => [ 'type' => 'error', 'text' => __( 'Arrival instructions could not be sent. Please check guest email, booking status, and payment status.', 'logestay' ) ],
+	];
+
+	if ( empty( $map[ $notice ] ) ) return;
+
+	$data = $map[ $notice ];
+	printf(
+		'<div class="notice notice-%1$s is-dismissible"><p>%2$s</p></div>',
+		esc_attr( $data['type'] ),
+		esc_html( $data['text'] )
+	);
+} );
 
 function logestay_render_booking_meta_box( WP_Post $post ) {
 	wp_nonce_field( 'logestay_booking_meta_save', 'logestay_booking_meta_nonce' );
@@ -88,6 +137,9 @@ function logestay_render_booking_meta_box( WP_Post $post ) {
 	$booking_status  = (string) logestay_bm( $booking_id, 'logestay_booking_status', 'pending' );
 	$hold_expires_at = (string) logestay_bm( $booking_id, 'logestay_hold_expires_at', '' );
 	$created_at      = (string) logestay_bm( $booking_id, 'logestay_created_at', '' );
+	$keybox_code     = (string) logestay_bm( $booking_id, 'logestay_keybox_code', '' );
+	$arrival_sent_at = (string) logestay_bm( $booking_id, 'logestay_arrival_instructions_sent_at', '' );
+	$arrival_source  = (string) logestay_bm( $booking_id, 'logestay_arrival_instructions_sent_source', '' );
 
 	// Listing / city titles
 	$listing_title = $listing_id ? get_the_title( $listing_id ) : '';
@@ -159,6 +211,14 @@ function logestay_render_booking_meta_box( WP_Post $post ) {
 			</label>
 		</div>
 	</div>
+
+	<div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;">
+		<?php submit_button( __( 'Payment Received / Confirm Booking', 'logestay' ), 'secondary', 'logestay_confirm_paid_and_booking', false ); ?>
+		<?php submit_button( $arrival_sent_at ? __( 'Resend Arrival Instructions', 'logestay' ) : __( 'Send Arrival Instructions', 'logestay' ), 'primary', 'logestay_send_arrival_instructions_now', false ); ?>
+	</div>
+	<p class="logestay-muted" style="margin-top:8px;">
+		<?php esc_html_e( 'Use the manual arrival email button for urgent bookings or manually validated payments.', 'logestay' ); ?>
+	</p>
 
 	<hr style="margin:18px 0;">
 
@@ -289,11 +349,66 @@ function logestay_render_booking_meta_box( WP_Post $post ) {
 			<div class="logestay-value"><?php echo esc_html( $created_at ?: '—' ); ?></div>
 		</div>
 
+		<div class="logestay-field">
+			<label><?php esc_html_e( 'Keybox Code', 'logestay' ); ?></label>
+			<div class="logestay-value"><?php echo esc_html( $keybox_code ?: '—' ); ?></div>
+		</div>
+
+		<div class="logestay-field">
+			<label><?php esc_html_e( 'Arrival Instructions Sent At', 'logestay' ); ?></label>
+			<div class="logestay-value"><?php echo esc_html( $arrival_sent_at ?: '—' ); ?></div>
+		</div>
+
+		<div class="logestay-field">
+			<label><?php esc_html_e( 'Arrival Instructions Source', 'logestay' ); ?></label>
+			<div class="logestay-value"><?php echo esc_html( $arrival_source ?: '—' ); ?></div>
+		</div>
+
 	</div>
 
 	
 
 	<?php
+}
+
+function logestay_render_booking_email_history_meta_box( WP_Post $post ) {
+	$booking_id = (int) $post->ID;
+	$log = function_exists( 'logestay_get_booking_email_log' )
+		? logestay_get_booking_email_log( $booking_id )
+		: [];
+
+	if ( empty( $log ) ) {
+		echo '<p>' . esc_html__( 'No booking emails have been logged yet.', 'logestay' ) . '</p>';
+		return;
+	}
+
+	$log = array_reverse( $log );
+
+	echo '<ul class="logestay-email-history">';
+	foreach ( $log as $entry ) {
+		$subject  = (string) ( $entry['subject'] ?? '' );
+		$type     = (string) ( $entry['type'] ?? '' );
+		$source   = (string) ( $entry['source'] ?? '' );
+		$template = (string) ( $entry['template'] ?? '' );
+		$sent_at  = (string) ( $entry['sent_at'] ?? '' );
+
+		echo '<li>';
+		echo '<strong style="display:block;margin-bottom:4px;">' . esc_html( $subject ?: __( 'Email sent', 'logestay' ) ) . '</strong>';
+		if ( $sent_at ) {
+			echo '<div class="logestay-muted" style="margin-top:0;">' . esc_html( $sent_at ) . '</div>';
+		}
+		if ( $type ) {
+			echo '<div class="logestay-muted">' . esc_html__( 'Type:', 'logestay' ) . ' ' . esc_html( $type ) . '</div>';
+		}
+		if ( $source ) {
+			echo '<div class="logestay-muted">' . esc_html__( 'Source:', 'logestay' ) . ' ' . esc_html( $source ) . '</div>';
+		}
+		if ( $template ) {
+			echo '<div class="logestay-muted">' . esc_html__( 'Template:', 'logestay' ) . ' ' . esc_html( $template ) . '</div>';
+		}
+		echo '</li>';
+	}
+	echo '</ul>';
 }
 
 add_action( 'save_post_logestay_booking', function ( $post_id ) {
@@ -318,5 +433,27 @@ add_action( 'save_post_logestay_booking', function ( $post_id ) {
 
 	if ( ! empty( $_POST['logestay_admin_clear_hold'] ) ) {
 		delete_post_meta( $post_id, 'logestay_hold_expires_at' );
+	}
+
+	if ( ! empty( $_POST['logestay_confirm_paid_and_booking'] ) ) {
+		update_post_meta( $post_id, 'logestay_booking_status', 'confirmed' );
+		update_post_meta( $post_id, 'logestay_payment_status', 'paid' );
+		if ( function_exists( 'logestay_get_or_create_keybox_code' ) ) {
+			logestay_get_or_create_keybox_code( (int) $post_id );
+		}
+		logestay_set_booking_admin_notice( 'booking_confirmed_paid' );
+	}
+
+	if ( ! empty( $_POST['logestay_send_arrival_instructions_now'] ) ) {
+		$already_sent = (string) get_post_meta( $post_id, 'logestay_arrival_instructions_sent_at', true );
+		$sent = function_exists( 'logestay_send_arrival_instructions_email' )
+			? logestay_send_arrival_instructions_email( (int) $post_id, 'manual' )
+			: false;
+
+		if ( $sent ) {
+			logestay_set_booking_admin_notice( $already_sent ? 'arrival_sent_manual_again' : 'arrival_sent_manual' );
+		} else {
+			logestay_set_booking_admin_notice( 'arrival_send_failed' );
+		}
 	}
 }, 10, 1 );

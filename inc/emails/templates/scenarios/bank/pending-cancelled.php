@@ -2,14 +2,13 @@
 
 $scenario = [
   'title' => 'Réservation annulée',
-  'pay_badge'  => ['label'=>'En attente','bg'=>'#FEF3C7','color'=>'#92400E','icon'=>'⏳'],
-  'book_badge' => ['label'=>'Annulée','bg'=>'#FEE2E2','color'=>'#991B1B','icon'=>'⛔'],
-  'message' => "Votre réservation a été annulée. Aucune action n'est requise.",
-  'method_label' => 'via virement bancaire',
-  'method_emoji' => '💳',
-  'cta_primary_label' => 'Finaliser le paiement',
-  'cta_primary_url' => '', // cancelled -> no payment CTA
-  'show_bank_block' => true,
+  'status_subtitle' => 'Paiement non effectué',
+  'pay_badge'  => false,
+  'book_badge' => ['label'=>'Annulée','bg'=>'#FEE2E2','color'=>'#991B1B'],
+  'message' => "Le paiement n’a pas été reçu. La réservation a été annulée automatiquement.",
+  'method_label' => 'Virement bancaire (paiement non reçu)',
+  'show_bank_block' => false,
+  'show_cta' => false,
 ];
 
 include get_template_directory() . '/inc/emails/templates/layouts/layout-bank.php';

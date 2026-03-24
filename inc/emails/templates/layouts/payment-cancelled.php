@@ -10,7 +10,7 @@
 
 <div style="margin:14px 0 18px;">
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#FEE2E2;color:#991B1B;font-weight:800;font-size:12px;margin-right:8px;">
-    ✖ Non reçu
+    Non reçu
   </span>
   <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:#E5E7EB;color:#374151;font-weight:800;font-size:12px;">
     Annulée

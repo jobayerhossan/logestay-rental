@@ -10,11 +10,10 @@ if ( ! defined('ABSPATH') ) exit;
  *
  * $scenario keys:
  *  - title (string)
- *  - pay_badge (array) ['label','bg','color','icon']
- *  - book_badge (array) ['label','bg','color','icon']
+ *  - pay_badge (array) ['label','bg','color']
+ *  - book_badge (array) ['label','bg','color']
  *  - message (string)
  *  - method_label (string) e.g. "via virement bancaire"
- *  - method_emoji (string) e.g. "💳"
  *  - cta_primary_label (string)
  *  - cta_primary_url (string)
  *  - show_bank_block (bool)
@@ -33,15 +32,15 @@ $bank_bic         = $vars['bank_bic']         ?? '';
 $bank_reference   = $vars['bank_reference']   ?? '';
 
 $title        = $scenario['title'] ?? 'Paiement en attente';
+$status_subtitle = $scenario['status_subtitle'] ?? '';
 $message      = $scenario['message'] ?? '';
 $method_label = $scenario['method_label'] ?? 'via virement bancaire';
-$method_emoji = $scenario['method_emoji'] ?? '💳';
-
 $cta_primary_label = $scenario['cta_primary_label'] ?? 'Finaliser le paiement';
 $show_bank_block   = array_key_exists('show_bank_block', $scenario) ? (bool)$scenario['show_bank_block'] : true;
+ $show_cta         = array_key_exists('show_cta', $scenario) ? (bool)$scenario['show_cta'] : true;
 
-$pay_badge  = $scenario['pay_badge']  ?? ['label'=>'En attente','bg'=>'#FEF3C7','color'=>'#92400E','icon'=>'⏳'];
-$book_badge = $scenario['book_badge'] ?? ['label'=>'Confirmée','bg'=>'#D1FAE5','color'=>'#065F46','icon'=>'✅'];
+$pay_badge  = array_key_exists('pay_badge', $scenario) && $scenario['pay_badge'] === false ? false : ($scenario['pay_badge']  ?? ['label'=>'En attente','bg'=>'#FEF3C7','color'=>'#92400E']);
+$book_badge = array_key_exists('book_badge', $scenario) && $scenario['book_badge'] === false ? false : ($scenario['book_badge'] ?? ['label'=>'Confirmée','bg'=>'#D1FAE5','color'=>'#065F46']);
 
 $note_box = $scenario['note_box'] ?? null;
 ?>
@@ -54,21 +53,30 @@ $note_box = $scenario['note_box'] ?? null;
   <?php echo esc_html($title); ?>
 </h2>
 
-<div style="margin:14px 0 18px;">
-  <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($pay_badge['bg']); ?>;color:<?php echo esc_attr($pay_badge['color']); ?>;font-weight:700;font-size:12px;margin-right:8px;">
-    <?php echo esc_html($pay_badge['icon']); ?> <?php echo esc_html($pay_badge['label']); ?>
-  </span>
+<?php if ( $status_subtitle !== '' ) : ?>
+  <p style="margin:0 0 14px;color:#64748B;font-size:13px;font-weight:700;line-height:1.5;">
+    <?php echo esc_html($status_subtitle); ?>
+  </p>
+<?php endif; ?>
 
-  <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($book_badge['bg']); ?>;color:<?php echo esc_attr($book_badge['color']); ?>;font-weight:700;font-size:12px;">
-    <?php echo esc_html($book_badge['icon']); ?> <?php echo esc_html($book_badge['label']); ?>
-  </span>
+<div style="margin:14px 0 18px;">
+  <?php if ( is_array($pay_badge) ) : ?>
+    <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($pay_badge['bg']); ?>;color:<?php echo esc_attr($pay_badge['color']); ?>;font-weight:700;font-size:12px;margin-right:8px;">
+      <?php echo esc_html($pay_badge['label']); ?>
+    </span>
+  <?php endif; ?>
+
+  <?php if ( is_array($book_badge) ) : ?>
+    <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($book_badge['bg']); ?>;color:<?php echo esc_attr($book_badge['color']); ?>;font-weight:700;font-size:12px;">
+      <?php echo esc_html($book_badge['label']); ?>
+    </span>
+  <?php endif; ?>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E5EEF9;border-radius:14px;padding:16px;">
   <div style="display:flex;gap:12px;align-items:flex-start;">
-    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:inline;align-items:center;justify-content:center;font-weight:800;color:#9A3412;line-height: 44px; text-align: center;">
-      <?php echo esc_html($method_emoji); ?>
+    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:inline-block;border:1px solid #FDBA74;">
     </div>
     <div style="flex:1;">
       <p style="margin:0 0 4px;font-weight:800;color:#111827;">Détails du paiement</p>
@@ -137,15 +145,17 @@ $note_box = $scenario['note_box'] ?? null;
   </div>
 <?php endif; ?>
 
-<!-- CTA -->
-<div style="margin:18px 0 0;display:flex;gap:12px;flex-wrap:wrap;">
-  <?php if (!empty($pay_url)) : ?>
-    <a href="<?php echo esc_url($pay_url); ?>" style="display:inline-block;background:#F97316;color:#fff;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:12px;">
-      <?php echo esc_html($cta_primary_label); ?>
-    </a>
-  <?php endif; ?>
+<?php if ( $show_cta ) : ?>
+  <!-- CTA -->
+  <div style="margin:18px 0 0;display:flex;gap:12px;flex-wrap:wrap;">
+    <?php if (!empty($pay_url)) : ?>
+      <a href="<?php echo esc_url($pay_url); ?>" style="display:inline-block;background:#F97316;color:#fff;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:12px;">
+        <?php echo esc_html($cta_primary_label); ?>
+      </a>
+    <?php endif; ?>
 
-  <a href="mailto:<?php echo esc_attr($support_email); ?>" style="display:inline-block;background:#F3F4F6;color:#111827;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:12px;">
-    Contacter le support
-  </a>
-</div>
+    <a href="mailto:<?php echo esc_attr($support_email); ?>" style="display:inline-block;background:#F3F4F6;color:#111827;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:12px;">
+      Contacter le support
+    </a>
+  </div>
+<?php endif; ?>

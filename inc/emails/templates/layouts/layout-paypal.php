@@ -69,13 +69,15 @@ $payment_status = (string) ($payment_status ?? 'pending');
 $booking_status = (string) ($booking_status ?? 'pending');
 
 $email_title        = (string) ($email_title ?? 'Paiement en attente');
+$email_status_subtitle = (string) ($email_status_subtitle ?? '');
 $email_payment_text = (string) ($email_payment_text ?? 'Votre paiement par PayPal est en cours de traitement.');
 $email_method_label = (string) ($email_method_label ?? 'PayPal');
+$email_amount_suffix = (string) ($email_amount_suffix ?? ('via ' . $email_method_label));
 
 [$def_pay_badge, $def_book_badge] = logestay_email_default_badges($payment_status, $booking_status);
 
-$email_badge_payment = is_array($email_badge_payment ?? null) ? $email_badge_payment : $def_pay_badge;
-$email_badge_booking = is_array($email_badge_booking ?? null) ? $email_badge_booking : $def_book_badge;
+$email_badge_payment = ($email_badge_payment === false) ? false : (is_array($email_badge_payment ?? null) ? $email_badge_payment : $def_pay_badge);
+$email_badge_booking = ($email_badge_booking === false) ? false : (is_array($email_badge_booking ?? null) ? $email_badge_booking : $def_book_badge);
 
 // CTA controls (can be false to hide)
 $cta_primary = $email_cta_primary ?? [
@@ -101,18 +103,27 @@ $cur_symbol = ($currency && strtoupper($currency) === 'EUR') ? '€' : strtouppe
 	<?php echo esc_html($email_title); ?>
 </h2>
 
+<?php if ( $email_status_subtitle !== '' ) : ?>
+	<p style="margin:0 0 14px;color:#64748B;font-size:13px;font-weight:700;line-height:1.5;">
+		<?php echo esc_html($email_status_subtitle); ?>
+	</p>
+<?php endif; ?>
+
 <div style="margin:12px 0 18px;">
 	<?php
-		echo logestay_email_badge_html($email_badge_payment);
-		echo logestay_email_badge_html($email_badge_booking);
+		if ( is_array($email_badge_payment) ) {
+			echo logestay_email_badge_html($email_badge_payment);
+		}
+		if ( is_array($email_badge_booking) ) {
+			echo logestay_email_badge_html($email_badge_booking);
+		}
 	?>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:18px;">
 	<div style="display:flex;gap:14px;align-items:flex-start;">
-		<div style="width:46px;height:46px;border-radius:999px;background:#FFEDD5;display:inline;align-items:center;justify-content:center;font-weight:900;color:#9A3412; text-align:center; line-height: 46px;">
-			💳
+		<div style="width:46px;height:46px;border-radius:999px;background:#FFEDD5;display:inline-block;border:1px solid #FDBA74;">
 		</div>
 		<div style="flex:1;">
 			<p style="margin:0 0 6px;font-weight:900;color:#0F172A;">Détails du paiement</p>
@@ -122,7 +133,7 @@ $cur_symbol = ($currency && strtoupper($currency) === 'EUR') ? '€' : strtouppe
 
 			<div style="font-size:34px;font-weight:950;color:#0F172A;line-height:1;">
 				<?php echo number_format_i18n((float)$total, 2); ?> <?php echo esc_html($cur_symbol); ?>
-				<span style="font-size:14px;font-weight:800;color:#64748B;margin-left:6px;">via <?php echo esc_html($email_method_label); ?></span>
+				<span style="font-size:14px;font-weight:800;color:#64748B;margin-left:6px;"><?php echo esc_html($email_amount_suffix); ?></span>
 			</div>
 		</div>
 	</div>

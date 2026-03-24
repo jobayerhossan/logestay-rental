@@ -14,7 +14,7 @@ $email_cta_secondary = [
 
 $email_action_html = '
 <div style="margin-top:12px;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:12px;padding:12px;color:#991B1B;font-weight:800;font-size:13px;">
-  ⛔ Action requise. Veuillez régulariser votre paiement pour confirmer votre réservation.
+  Action requise. Veuillez régulariser votre paiement pour confirmer votre réservation.
 </div>';
 
 include get_template_directory() . '/inc/emails/templates/layouts/layout-card.php';

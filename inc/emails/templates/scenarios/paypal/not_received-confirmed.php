@@ -12,7 +12,7 @@ $email_cta_secondary = false;
 
 $email_body_html = '
 <div style="margin-top:16px;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:14px;padding:14px;color:#991B1B;font-weight:800;font-size:13px;line-height:1.5;">
-  ⛔ Action requise. Veuillez régulariser votre paiement pour confirmer votre réservation.
+  Action requise. Veuillez régulariser votre paiement pour confirmer votre réservation.
 </div>';
 
 include get_template_directory() . '/inc/emails/templates/layouts/layout-paypal.php';

@@ -25,6 +25,64 @@ function logestay_email_format_date(string $date): string {
 	return wp_date('d/m/Y', $timestamp, wp_timezone());
 }
 
+function logestay_email_arrival_text(string $date, string $time): string {
+	$date_label = logestay_email_format_date($date);
+	$time = trim($time) !== '' ? trim($time) : '15:00';
+
+	if ($date_label === '') {
+		return '';
+	}
+
+	return sprintf('%s à partir de %s', $date_label, $time);
+}
+
+function logestay_email_departure_text(string $date, string $time): string {
+	$date_label = logestay_email_format_date($date);
+	$time = trim($time) !== '' ? trim($time) : '11:00';
+
+	if ($date_label === '') {
+		return '';
+	}
+
+	return sprintf('%s à %s', $date_label, $time);
+}
+
+function logestay_email_format_cash_hours(string $hours): string {
+	$hours = trim($hours);
+
+	if ($hours === '') {
+		return "Du lundi au vendredi : 09:00 – 18:00\nSamedi : 10:00 – 16:00";
+	}
+
+	$hours = strtr($hours, [
+		'Mon-Fri:' => 'Du lundi au vendredi :',
+		'Mon-Fri'  => 'Du lundi au vendredi',
+		'Mon - Fri:' => 'Du lundi au vendredi :',
+		'Sat:'     => 'Samedi :',
+		'Sat'      => 'Samedi',
+		'|'        => "\n",
+	]);
+
+	$hours = preg_replace_callback('/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i', static function(array $m): string {
+		$hour = (int) $m[1];
+		$minute = isset($m[2]) && $m[2] !== '' ? $m[2] : '00';
+		$period = strtolower($m[3]);
+
+		if ($period === 'pm' && $hour < 12) {
+			$hour += 12;
+		}
+		if ($period === 'am' && $hour === 12) {
+			$hour = 0;
+		}
+
+		return sprintf('%02d:%s', $hour, $minute);
+	}, $hours);
+
+	$hours = preg_replace('/(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/', '$1 – $2', $hours);
+
+	return trim((string) $hours);
+}
+
 function logestay_email_payment_method_label(string $method): string {
 	$map = [
 		'card'   => 'Carte bancaire',
@@ -36,6 +94,29 @@ function logestay_email_payment_method_label(string $method): string {
 
 	$method = strtolower(trim($method));
 	return $map[$method] ?? ucfirst($method);
+}
+
+function logestay_generate_keybox_code(): string {
+	$alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+	$code = '';
+
+	for ($i = 0; $i < 6; $i++) {
+		$code .= $alphabet[wp_rand(0, strlen($alphabet) - 1)];
+	}
+
+	return substr($code, 0, 3) . '-' . substr($code, 3);
+}
+
+function logestay_get_or_create_keybox_code(int $booking_id): string {
+	$code = trim((string) get_post_meta($booking_id, 'logestay_keybox_code', true));
+	if ($code !== '') {
+		return $code;
+	}
+
+	$code = logestay_generate_keybox_code();
+	update_post_meta($booking_id, 'logestay_keybox_code', $code);
+
+	return $code;
 }
 
 function logestay_email_property_address(int $listing_id, int $city_id): string {
@@ -61,6 +142,31 @@ function logestay_email_property_address(int $listing_id, int $city_id): string 
 	return '';
 }
 
+function logestay_get_booking_email_log(int $booking_id): array {
+	$log = get_post_meta($booking_id, 'logestay_email_log', true);
+	return is_array($log) ? $log : [];
+}
+
+function logestay_append_booking_email_log(int $booking_id, array $entry): void {
+	$log = logestay_get_booking_email_log($booking_id);
+
+	$clean = [
+		'type'     => sanitize_text_field((string) ($entry['type'] ?? 'booking_email')),
+		'subject'  => sanitize_text_field((string) ($entry['subject'] ?? '')),
+		'source'   => sanitize_text_field((string) ($entry['source'] ?? 'system')),
+		'template' => sanitize_text_field((string) ($entry['template'] ?? '')),
+		'sent_at'  => sanitize_text_field((string) ($entry['sent_at'] ?? current_time('mysql'))),
+	];
+
+	$log[] = $clean;
+
+	if (count($log) > 30) {
+		$log = array_slice($log, -30);
+	}
+
+	update_post_meta($booking_id, 'logestay_email_log', $log);
+}
+
 function logestay_email_subject_from_vars(array $vars, int $booking_id = 0): string {
 	$method = logestay_email_norm_method($vars['payment_method'] ?? '');
 	$pay    = logestay_email_norm_payment_status($vars['payment_status'] ?? '');
@@ -77,6 +183,48 @@ function logestay_email_subject_from_vars(array $vars, int $booking_id = 0): str
 			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id),
 			$check_in_label,
 			$check_out_label
+		);
+	}
+
+	if ($method === 'bank' && $pay === 'pending' && $book === 'pending') {
+		$property_name = trim((string) ($vars['listing_title'] ?? ''));
+		$check_in_label = trim((string) ($vars['check_in_formatted'] ?? ($vars['check_in'] ?? '')));
+
+		return sprintf(
+			'Action requise : virement bancaire pour confirmer votre séjour – %s %s',
+			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id),
+			$check_in_label
+		);
+	}
+
+	if ($method === 'cash' && $pay === 'pending') {
+		$property_name = trim((string) ($vars['listing_title'] ?? ''));
+		$check_in_label = trim((string) ($vars['check_in_formatted'] ?? ($vars['check_in'] ?? '')));
+
+		return sprintf(
+			'Paiement sur place requis pour confirmer votre réservation – %s %s',
+			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id),
+			$check_in_label
+		);
+	}
+
+	if ($method === 'link' && $pay === 'pending') {
+		$property_name = trim((string) ($vars['listing_title'] ?? ''));
+		$check_in_label = trim((string) ($vars['check_in_formatted'] ?? ($vars['check_in'] ?? '')));
+
+		return sprintf(
+			'Finalisez votre paiement pour confirmer votre séjour – %s %s',
+			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id),
+			$check_in_label
+		);
+	}
+
+	if (in_array($method, ['bank', 'cash', 'link'], true) && $pay === 'paid' && $book === 'confirmed') {
+		$property_name = trim((string) ($vars['listing_title'] ?? ''));
+
+		return sprintf(
+			'Paiement reçu – Votre réservation est confirmée pour %s',
+			$property_name !== '' ? $property_name : sprintf('Booking #%d', $booking_id)
 		);
 	}
 
@@ -191,7 +339,10 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 	$site_url    = home_url('/');
 	$account_url = home_url('/'); // later: client area URL
 	$support_url = home_url('/'); // later: support page
-	$pay_url     = home_url('/'); // later: resume payment / client area
+	$pay_url     = trim((string) get_post_meta($booking_id, 'logestay_payment_link_url', true));
+	if ($pay_url === '' && !empty($settings['logestay_payment_link_url'])) {
+		$pay_url = esc_url_raw((string) $settings['logestay_payment_link_url']);
+	}
 
 	// Nice-to-have: logo (works in emails header)
 	$custom_logo_id = (int) get_theme_mod('custom_logo');
@@ -210,12 +361,18 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 	// Payment reference (prefer stored meta if you create one later)
 	$bank_reference = (string) get_post_meta($booking_id, 'logestay_payment_reference', true);
 	if ($bank_reference === '') {
-		$bank_reference = 'REF-' . $booking_id;
+		$bank_reference = 'RES-' . $booking_id;
 	}
 
 	$guest_count = max(0, $adults) + max(0, $children);
 	$property_address = logestay_email_property_address($listing_id, $city_id);
 	$host_phone = '+33 1 42 86 83 26';
+	$hold_hours = function_exists('logestay_get_hold_hours_by_payment')
+		? (int) logestay_get_hold_hours_by_payment($payment_method)
+		: 24;
+	if ($hold_hours <= 0) {
+		$hold_hours = 24;
+	}
 
 	$vars = [
 		'booking_id' => $booking_id,
@@ -256,15 +413,19 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 		'checkout_time' => $checkout_time ?: '11:00',
 		'check_in_formatted' => logestay_email_format_date($check_in),
 		'check_out_formatted' => logestay_email_format_date($check_out),
+		'check_in_with_time' => logestay_email_arrival_text($check_in, $checkin_time ?: '15:00'),
+		'check_out_with_time' => logestay_email_departure_text($check_out, $checkout_time ?: '11:00'),
 		'property_address' => $property_address,
 		'reservation_price' => number_format_i18n($total, 2) . ' ' . $currency,
 		'host_phone' => $host_phone,
+		'keybox_code' => trim((string) get_post_meta($booking_id, 'logestay_keybox_code', true)),
 
 		// Links / support
 		'account_url'   => $account_url,
 		'support_email' => $support_email,
 		'support_url'   => $support_url,
 		'pay_url'       => $pay_url,
+		'payment_link'  => $pay_url,
 		'site_url'      => $site_url,
 
 		// Brand
@@ -279,14 +440,141 @@ function logestay_email_vars_from_booking(int $booking_id): array {
 	$vars['bank_iban']        = 'FR76 1234 5678 9012 3456 7890 123';
 	$vars['bank_bic']         = 'LOGEFRPP';
 	$vars['bank_reference']   = $bank_reference;
+	$vars['bank_name']        = 'BNP Paribas';
+	$vars['bank_hold_hours']  = $hold_hours;
+
+	if (!empty($settings['logestay_bank_beneficiary'])) {
+		$vars['bank_beneficiary'] = (string) $settings['logestay_bank_beneficiary'];
+	}
+	if (!empty($settings['logestay_bank_iban'])) {
+		$vars['bank_iban'] = (string) $settings['logestay_bank_iban'];
+	}
+	if (!empty($settings['logestay_bank_bic'])) {
+		$vars['bank_bic'] = (string) $settings['logestay_bank_bic'];
+	}
 
 	$vars['cash_office_name']    = 'LOGESTAY Office';
 	$vars['cash_office_address'] = '12 Rue de la République, 31000 Toulouse';
-	$vars['cash_hours']          = 'Mon-Fri: 9am-6pm | Sat: 10am-4pm';
+	$vars['cash_hours']          = "Du lundi au vendredi : 09:00 – 18:00\nSamedi : 10:00 – 16:00";
+
+	if (!empty($settings['logestay_cash_office_name'])) {
+		$vars['cash_office_name'] = (string) $settings['logestay_cash_office_name'];
+	}
+	if (!empty($settings['logestay_cash_office_address'])) {
+		$vars['cash_office_address'] = (string) $settings['logestay_cash_office_address'];
+	}
+	if (!empty($settings['logestay_cash_hours'])) {
+		$vars['cash_hours'] = (string) $settings['logestay_cash_hours'];
+	}
+
+	$vars['cash_hours'] = logestay_email_format_cash_hours((string) $vars['cash_hours']);
 
 	$vars['payment_link_note']   = "Un lien de paiement sécurisé vous a été envoyé.";
 
 	return apply_filters('logestay_email_booking_vars', $vars, $booking_id);
+}
+
+function logestay_send_arrival_instructions_email(int $booking_id, string $source = 'scheduled'): bool {
+	$vars = logestay_email_vars_from_booking($booking_id);
+	if (empty($vars['guest_email'])) return false;
+	if (($vars['booking_status'] ?? '') !== 'confirmed') return false;
+	if (($vars['payment_status'] ?? '') !== 'paid') return false;
+
+	$vars['keybox_code'] = logestay_get_or_create_keybox_code($booking_id);
+
+	$subject = sprintf(
+		'Instructions d’arrivée pour votre séjour demain – %s',
+		trim((string) ($vars['listing_title'] ?? '')) ?: sprintf('Booking #%d', $booking_id)
+	);
+
+	$content = logestay_email_render_template('arrival-instructions.php', $vars);
+	if ($content === '') {
+		return false;
+	}
+
+	$html = logestay_email_wrap($content, [
+		'preheader' => $subject,
+	]);
+
+	$sent = logestay_mail($vars['guest_email'], $subject, $html);
+	if ($sent) {
+		update_post_meta($booking_id, 'logestay_arrival_instructions_sent_at', current_time('mysql'));
+		update_post_meta($booking_id, 'logestay_arrival_instructions_sent_source', sanitize_text_field($source));
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => 'arrival_instructions',
+			'subject'  => $subject,
+			'source'   => $source,
+			'template' => 'arrival-instructions.php',
+		]);
+	}
+
+	return $sent;
+}
+
+function logestay_send_checkout_reminder_email(int $booking_id): bool {
+	$vars = logestay_email_vars_from_booking($booking_id);
+	if (empty($vars['guest_email'])) return false;
+	if (($vars['booking_status'] ?? '') !== 'confirmed') return false;
+
+	$subject = sprintf(
+		'Rappel : départ demain avant %s – %s',
+		trim((string) ($vars['checkout_time'] ?? '11:00')),
+		trim((string) ($vars['listing_title'] ?? '')) ?: sprintf('Booking #%d', $booking_id)
+	);
+
+	$content = logestay_email_render_template('checkout-reminder.php', $vars);
+	if ($content === '') {
+		return false;
+	}
+
+	$html = logestay_email_wrap($content, [
+		'preheader' => $subject,
+	]);
+
+	$sent = logestay_mail($vars['guest_email'], $subject, $html);
+	if ($sent) {
+		update_post_meta($booking_id, 'logestay_checkout_reminder_sent_at', current_time('mysql'));
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => 'checkout_reminder',
+			'subject'  => $subject,
+			'source'   => 'scheduled',
+			'template' => 'checkout-reminder.php',
+		]);
+	}
+
+	return $sent;
+}
+
+function logestay_send_post_stay_email(int $booking_id): bool {
+	$vars = logestay_email_vars_from_booking($booking_id);
+	if (empty($vars['guest_email'])) return false;
+
+	$subject = sprintf(
+		'Merci pour votre séjour à %s',
+		trim((string) ($vars['listing_title'] ?? '')) ?: sprintf('Booking #%d', $booking_id)
+	);
+
+	$content = logestay_email_render_template('post-stay.php', $vars);
+	if ($content === '') {
+		return false;
+	}
+
+	$html = logestay_email_wrap($content, [
+		'preheader' => $subject,
+	]);
+
+	$sent = logestay_mail($vars['guest_email'], $subject, $html);
+	if ($sent) {
+		update_post_meta($booking_id, 'logestay_post_stay_email_sent_at', current_time('mysql'));
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => 'post_stay',
+			'subject'  => $subject,
+			'source'   => 'scheduled',
+			'template' => 'post-stay.php',
+		]);
+	}
+
+	return $sent;
 }
 
 
@@ -309,7 +597,17 @@ function logestay_send_booking_status_email(int $booking_id): bool {
 		'preheader' => $subject,
 	]);
 
-	return logestay_mail($vars['guest_email'], $subject, $html);
+	$sent = logestay_mail($vars['guest_email'], $subject, $html);
+	if ($sent) {
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => 'booking_status',
+			'subject'  => $subject,
+			'source'   => 'hook',
+			'template' => $template,
+		]);
+	}
+
+	return $sent;
 }
 
 /**
@@ -360,7 +658,17 @@ function logestay_send_booking_email(int $booking_id, string $template_key): boo
 
 	$html = apply_filters('logestay_email_html', $html, $template_key, $booking_id, $vars);
 
-	return logestay_mail($vars['guest_email'], $subject, $html);
+	$sent = logestay_mail($vars['guest_email'], $subject, $html);
+	if ($sent) {
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => $template_key,
+			'subject'  => $subject,
+			'source'   => 'manual',
+			'template' => $config['file'],
+		]);
+	}
+
+	return $sent;
 }
 
 /**
@@ -415,9 +723,7 @@ function logestay_email_template_config(string $key, int $booking_id = 0): array
 	];
 }
 
-
 add_action('logestay_booking_state_email', function(int $booking_id, string $key, array $ctx){
-
 	$vars = function_exists('logestay_email_vars_from_booking')
 		? logestay_email_vars_from_booking($booking_id)
 		: [];
@@ -439,7 +745,15 @@ add_action('logestay_booking_state_email', function(int $booking_id, string $key
 		'preheader' => $cfg['subject'],
 	]);
 
-	logestay_mail($to, $cfg['subject'], $html);
+	$sent = logestay_mail($to, $cfg['subject'], $html);
+	if ( $sent ) {
+		logestay_append_booking_email_log($booking_id, [
+			'type'     => 'booking_state',
+			'subject'  => $cfg['subject'],
+			'source'   => sanitize_text_field((string) ($ctx['source'] ?? 'status_change')),
+			'template' => $cfg['template'],
+		]);
+	}
 
 }, 10, 3);
 

@@ -126,3 +126,16 @@ add_action('save_post_logestay_booking', function($post_id){
 
 
 }, 100);
+
+add_action('save_post_logestay_booking', function($post_id){
+	$payment_status = (string) get_post_meta($post_id, 'logestay_payment_status', true);
+	$booking_status = (string) get_post_meta($post_id, 'logestay_booking_status', true);
+
+	if ($payment_status !== 'paid' || $booking_status !== 'confirmed') {
+		return;
+	}
+
+	if (function_exists('logestay_get_or_create_keybox_code')) {
+		logestay_get_or_create_keybox_code((int) $post_id);
+	}
+}, 110);

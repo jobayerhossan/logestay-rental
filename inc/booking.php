@@ -128,9 +128,16 @@ function logestay_ajax_check_availability() {
 	$check_out  = logestay_normalize_date( $_POST['end_date'] ?? '' );
 	$payment    = sanitize_text_field( $_POST['payment']);
 	$guest      = $_POST['guest'] ?? [];
+	$settings   = get_option('logestay_settings', []);
+	$settings   = is_array($settings) ? $settings : [];
+	$link_url   = trim((string) ($settings['logestay_payment_link_url'] ?? ''));
 
 	if ( ! $listing_id || ! $check_in || ! $check_out ) {
 		wp_send_json_error( [ 'message' => 'Invalid booking data.' ] );
+	}
+
+	if ( $payment === 'link' && $link_url === '' ) {
+		wp_send_json_error( [ 'message' => __('Payment link is not configured yet. Please choose another payment method or contact support.', 'logestay') ] );
 	}
 
 	$adults   = absint($guest['adults'] ?? 1);
@@ -162,9 +169,9 @@ function logestay_ajax_check_availability() {
 		wp_send_json_error( [ 'message' => __('Dates are no longer available.', 'logestay') ] );
 	}
 
-	// 2️⃣ Create HOLD booking (15 min)
-	$hold_minutes = 15;
-	$expires_at   = date( 'Y-m-d H:i:s', strtotime( "+{$hold_minutes} minutes", current_time( 'timestamp' ) ) );
+	// 2️⃣ Create HOLD booking based on payment method settings
+	$hold_hours = logestay_get_hold_hours_by_payment($payment);
+	$expires_at = date( 'Y-m-d H:i:s', strtotime( "+{$hold_hours} hours", current_time( 'timestamp' ) ) );
 
 	$booking_id = wp_insert_post( [
 		'post_type'   => 'logestay_booking',
@@ -191,6 +198,9 @@ function logestay_ajax_check_availability() {
 	update_post_meta( $booking_id, 'logestay_payment_status', 'pending' );
 	update_post_meta( $booking_id, 'logestay_hold_expires_at', $expires_at );
 	update_post_meta( $booking_id, 'logestay_created_at', current_time( 'mysql' ) );
+	if ( $payment === 'link' && $link_url !== '' ) {
+		update_post_meta( $booking_id, 'logestay_payment_link_url', esc_url_raw( $link_url ) );
+	}
 
 	// Guest details
 	update_post_meta( $booking_id, 'logestay_guest_name', sanitize_text_field( $guest['name'] ?? '' ) );

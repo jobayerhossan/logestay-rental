@@ -1,18 +1,15 @@
 <?php if ( ! defined('ABSPATH') ) exit;
 
-$title_h1     = 'Réservation annulée';
-$details_text = "Votre réservation a été annulée. Si vous avez effectué un paiement, il vous sera remboursé dans les 5 à 10 jours ouvrés.";
-$payment_method_label = 'lien de paiement';
+$title_h1             = 'Réservation annulée';
+$status_subtitle      = 'Paiement non effectué';
+$details_text         = "Le paiement n’a pas été effectué. La réservation a été annulée automatiquement.";
+$payment_method_label = 'Lien de paiement (paiement non effectué)';
+$amount_suffix        = 'Lien de paiement (paiement non effectué)';
 
-$badge_payment = ['text'=>'Payé', 'bg'=>'#D1FAE5', 'color'=>'#065F46', 'icon'=>'✅'];
-$badge_booking = ['text'=>'Annulée', 'bg'=>'#FEE2E2', 'color'=>'#991B1B', 'icon'=>'⛔'];
+$badge_payment = false;
+$badge_booking = ['text'=>'Annulée', 'bg'=>'#FEE2E2', 'color'=>'#991B1B'];
 
-$show_cta = false;
-
-$notice_box = [
-  'bg' => '#F8FAFC',
-  'border' => '#CBD5E1',
-  'text' => "Votre réservation a été annulée. Aucune action n'est requise.",
-];
+$show_cta   = false;
+$notice_box = false;
 
 include get_template_directory() . '/inc/emails/templates/layouts/layout-link.php';

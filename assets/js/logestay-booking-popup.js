@@ -13,8 +13,6 @@
 (function ($) {
   "use strict";
 
-  console.log(logestay);
-
   // ----------------------------
   // Utils
   // ----------------------------
@@ -80,7 +78,63 @@
     const settingKey = map[key];
     if (!settingKey) return false;
 
-    return String(logestay?.settings?.[settingKey]) === '1';
+    const isEnabled = String(logestay?.settings?.[settingKey]) === '1';
+    if (!isEnabled) return false;
+
+    if (key === 'link') {
+      return Boolean(String(logestay?.settings?.logestay_payment_link_url || '').trim());
+    }
+
+    return true;
+  }
+
+  function isSettingEnabled(key, fallback = false) {
+    const settings = logestay?.settings || {};
+
+    if (!Object.prototype.hasOwnProperty.call(settings, key)) {
+      return fallback;
+    }
+
+    return String(settings[key]) === "1";
+  }
+
+  function getSettingValue(key) {
+    return String(logestay?.settings?.[key] || "").trim();
+  }
+
+  function isSimpleModeEnabled() {
+    return isSettingEnabled("logestay_simple_mode_enabled", false);
+  }
+
+  function getWhatsAppHref() {
+    if (!isSettingEnabled("logestay_contact_whatsapp_enabled", true)) return "";
+
+    const raw = getSettingValue("logestay_contact_whatsapp");
+    if (!raw) return "";
+
+    if (/^https?:\/\//i.test(raw)) {
+      return raw;
+    }
+
+    const digits = raw.replace(/[^\d]/g, "");
+    return digits ? `https://wa.me/${digits}` : "";
+  }
+
+  function getPhoneHref() {
+    if (!isSettingEnabled("logestay_contact_phone_enabled", true)) return "";
+
+    const raw = getSettingValue("logestay_contact_phone");
+    if (!raw) return "";
+
+    const normalized = raw.replace(/[^+\d]/g, "");
+    return normalized ? `tel:${normalized}` : "";
+  }
+
+  function getEmailHref() {
+    if (!isSettingEnabled("logestay_contact_email_enabled", true)) return "";
+
+    const raw = getSettingValue("logestay_contact_email");
+    return raw ? `mailto:${raw}` : "";
   }
 
   function tp(key, fallback) {
@@ -158,6 +212,7 @@
     },
     disabledDates: [],
     cleaningFee: 0,
+    simpleMode: isSimpleModeEnabled(),
   };
 
   // ----------------------------
@@ -286,6 +341,129 @@
     });
   }
 
+  function showcaseModeMarkup() {
+    const whatsappHref = getWhatsAppHref();
+    const phoneHref = getPhoneHref();
+    const emailHref = getEmailHref();
+
+    const hasContacts = !!(whatsappHref || phoneHref || emailHref);
+
+    return `
+<div class="space-y-6">
+  <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
+    <div class="flex items-start gap-3 mb-4">
+      <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info w-5 h-5 text-blue-600"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+      </div>
+      <div class="flex-1">
+        <h4 class="font-bold text-gray-900 mb-1">Réservation via nos partenaires</h4>
+        <p class="text-sm text-gray-700 leading-relaxed">Réservez directement via nos plateformes partenaires ou contactez-nous pour plus d'informations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-4 hidden" data-showcase-section="partners">
+    <h4 class="font-bold text-gray-900 text-lg">Réserver en ligne</h4>
+
+    <a href="${escapeAttr(state.partner.airbnbUrl || "#")}" target="_blank" rel="noopener noreferrer" class="hidden w-full flex items-center justify-between gap-4 bg-[#FF5A5F] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#E0484D] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group" data-showcase-button="airbnb">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+        </div>
+        <span class="text-left"><span class="block text-sm opacity-90">Réserver sur</span><span class="block font-bold">Airbnb</span></span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+    </a>
+
+    <a href="${escapeAttr(state.partner.bookingUrl || "#")}" target="_blank" rel="noopener noreferrer" class="hidden w-full flex items-center justify-between gap-4 bg-[#003580] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#002A66] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group" data-showcase-button="booking">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+        </div>
+        <span class="text-left"><span class="block text-sm opacity-90">Réserver sur</span><span class="block font-bold">Booking.com</span></span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+    </a>
+  </div>
+
+  <div class="relative my-6 ${hasContacts ? "" : "hidden"}" data-showcase-divider>
+    <div class="absolute inset-0 flex items-center"><div class="w-full border-t-2 border-gray-200"></div></div>
+    <div class="relative flex justify-center"><span class="bg-white px-4 text-sm font-medium text-gray-500">ou contactez l'hôte</span></div>
+  </div>
+
+  <div class="space-y-3 ${hasContacts ? "" : "hidden"}" data-showcase-section="contacts">
+    <h4 class="font-bold text-gray-900 text-lg">Contact direct</h4>
+
+    <a href="${escapeAttr(whatsappHref || "#")}" target="_blank" rel="noopener noreferrer" class="${whatsappHref ? "" : "hidden "}w-full flex items-center justify-between gap-4 bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group" data-showcase-contact="whatsapp">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-5 h-5"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+        </div>
+        <span class="text-left"><span class="block text-sm opacity-90">Contacter via</span><span class="block font-bold">WhatsApp</span></span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-5 h-5 group-hover:scale-110 transition-transform duration-300"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+    </a>
+
+    <a href="${escapeAttr(phoneHref || "#")}" class="${phoneHref ? "" : "hidden "}w-full flex items-center justify-between gap-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group" data-showcase-contact="phone">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </div>
+        <span class="text-left"><span class="block text-sm opacity-90">Contacter via</span><span class="block font-bold">Téléphone</span></span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5 group-hover:scale-110 transition-transform duration-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
+    <a href="${escapeAttr(emailHref || "#")}" class="${emailHref ? "" : "hidden "}w-full flex items-center justify-between gap-4 bg-gradient-to-r from-gray-700 to-gray-800 text-white py-4 px-6 rounded-xl font-semibold hover:from-gray-800 hover:to-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group" data-showcase-contact="email">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+        </div>
+        <span class="text-left"><span class="block text-sm opacity-90">Contacter via</span><span class="block font-bold">Email</span></span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5 group-hover:scale-110 transition-transform duration-300"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+    </a>
+  </div>
+
+  <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+    <p class="text-sm text-gray-600 leading-relaxed text-center">Notre équipe est disponible pour répondre à toutes vos questions et vous accompagner dans votre réservation.</p>
+  </div>
+</div>`;
+  }
+
+  function refreshShowcaseModeUI($root) {
+    const airbnbEnabled = isSettingEnabled("logestay_airbnb_enabled", true);
+    const bookingEnabled = isSettingEnabled("logestay_booking_enabled", true);
+    const airbnbUrl = String(state.partner.airbnbUrl || "").trim();
+    const bookingUrl = String(state.partner.bookingUrl || "").trim();
+    const whatsappHref = getWhatsAppHref();
+    const phoneHref = getPhoneHref();
+    const emailHref = getEmailHref();
+
+    const showAirbnb = airbnbEnabled && !!airbnbUrl;
+    const showBooking = bookingEnabled && !!bookingUrl;
+    const hasPartners = showAirbnb || showBooking;
+    const hasContacts = !!(whatsappHref || phoneHref || emailHref);
+
+    const $partnerSection = $root.find('[data-showcase-section="partners"]');
+    const $divider = $root.find("[data-showcase-divider]");
+    const $contactSection = $root.find('[data-showcase-section="contacts"]');
+
+    const $air = $root.find('[data-showcase-button="airbnb"]');
+    const $bok = $root.find('[data-showcase-button="booking"]');
+
+    $air.toggleClass("hidden", !showAirbnb).attr("href", showAirbnb ? airbnbUrl : "#");
+    $bok.toggleClass("hidden", !showBooking).attr("href", showBooking ? bookingUrl : "#");
+
+    $partnerSection.toggleClass("hidden", !hasPartners);
+    $contactSection.toggleClass("hidden", !hasContacts);
+    $divider.toggleClass("hidden", !(hasPartners && hasContacts));
+
+    $root.find('[data-showcase-contact="whatsapp"]').toggleClass("hidden", !whatsappHref).attr("href", whatsappHref || "#");
+    $root.find('[data-showcase-contact="phone"]').toggleClass("hidden", !phoneHref).attr("href", phoneHref || "#");
+    $root.find('[data-showcase-contact="email"]').toggleClass("hidden", !emailHref).attr("href", emailHref || "#");
+  }
+
   function modalTemplate() {
   return `
 <div class="logestay-av-modal fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-4 animate-fadeIn" aria-hidden="true">
@@ -347,6 +525,7 @@
 
       </div>
 
+      ${state.simpleMode ? showcaseModeMarkup() : `
       <!-- Guest Selector -->
       <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-6">
@@ -381,7 +560,7 @@
       <div class="logestay-guest-details hidden"></div>
 
       <!-- Partner buttons -->
-      <div class="border-t border-gray-200 pt-6 ${
+      <div class="logestay-partner-wrap border-t border-gray-200 pt-6 ${
   (!state.partner.airbnbUrl?.trim() && !state.partner.bookingUrl?.trim())
     ? 'hidden'
     : ''
@@ -396,7 +575,7 @@
             ${logestay.i18n.booking || 'Réserver sur Booking'}
           </a>
         </div>
-      </div>
+      </div>`}
 
 
         </div>
@@ -1113,6 +1292,11 @@ function updateSelectedDatesUI($root) {
   // Payment UI
   // ----------------------------
   function updatePaymentUI($root) {
+    if (state.simpleMode) {
+      $root.find(".logestay-pay-wrap, .logestay-summary, .logestay-guest-details").addClass("hidden");
+      return;
+    }
+
     const hasDates = !!(state.startDate && state.endDate && calcNights() > 0);
 
     const $wrap = $root.find(".logestay-pay-wrap");
@@ -1222,6 +1406,7 @@ function updateSelectedDatesUI($root) {
     state.startDate = null;
     state.endDate = null;
     state.payment = null;
+    state.simpleMode = isSimpleModeEnabled();
     state.monthBase = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
     state.checkinTime = "15:00";
     state.checkoutTime = "11:00";
@@ -1239,6 +1424,10 @@ function updateSelectedDatesUI($root) {
 
     const $root = $(".logestay-av-modal").last();
     $root.attr("aria-hidden", "false");
+
+    if (state.simpleMode) {
+      refreshShowcaseModeUI($root);
+    }
 
     // lock scroll
     $("body").addClass("overflow-hidden");
@@ -1287,29 +1476,25 @@ function updateSelectedDatesUI($root) {
         const $air = $root.find(".logestay-partner-airbnb");
         const $bok = $root.find(".logestay-partner-booking");
 
-        if (airbnbUrl) {
-          $air.removeClass("hidden").attr("href", airbnbUrl);
+        if (state.simpleMode) {
+          refreshShowcaseModeUI($root);
         } else {
-          $air.addClass("hidden").attr("href", "");
+          if (airbnbUrl) {
+            $air.removeClass("hidden").attr("href", airbnbUrl);
+          } else {
+            $air.addClass("hidden").attr("href", "");
+          }
+
+          if (bookingUrl) {
+            $bok.removeClass("hidden").attr("href", bookingUrl);
+          } else {
+            $bok.addClass("hidden").attr("href", "");
+          }
+
+          const $partnerWrap = $root.find(".logestay-partner-wrap");
+          const hasPartners = !!airbnbUrl || !!bookingUrl;
+          $partnerWrap.toggleClass("hidden", !hasPartners);
         }
-
-        if (bookingUrl) {
-          $bok.removeClass("hidden").attr("href", bookingUrl);
-        } else {
-          $bok.addClass("hidden").attr("href", "");
-        }
-
-        // IMPORTANT: wrapper that you want to hide/show
-        const $partnerWrap = $root.find(".logestay-partner-wrap"); // add this class in markup (best)
-        // fallback if you didn't add class:
-        const $partnerWrapFallback = $air.closest(".border-t.border-gray-200.pt-6");
-
-        // Show/hide the whole section based on BOTH urls
-        const hasPartners = !!airbnbUrl || !!bookingUrl;
-
-        // Use the wrapper you have
-        const $wrap = $partnerWrap.length ? $partnerWrap : $partnerWrapFallback;
-        $wrap.toggleClass("hidden", !hasPartners);
 
         safeCallLucide(); // refresh partner button icons too
 

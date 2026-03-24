@@ -2,11 +2,10 @@
 
 $scenario = [
   'title' => 'Paiement non reçu',
-  'pay_badge'  => ['label'=>'Non reçu','bg'=>'#FEE2E2','color'=>'#991B1B','icon'=>'⛔'],
-  'book_badge' => ['label'=>'Confirmée','bg'=>'#D1FAE5','color'=>'#065F46','icon'=>'✅'],
+  'pay_badge'  => ['label'=>'Non reçu','bg'=>'#FEE2E2','color'=>'#991B1B'],
+  'book_badge' => ['label'=>'Confirmée','bg'=>'#D1FAE5','color'=>'#065F46'],
   'message' => "Nous n'avons pas reçu votre paiement par virement bancaire. Veuillez vérifier ou contacter notre support.",
   'method_label' => 'via virement bancaire',
-  'method_emoji' => '💳',
   'cta_primary_label' => 'Contacter le support',
   'cta_primary_url' => 'mailto:' . ($vars['support_email'] ?? get_option('admin_email')),
   'show_bank_block' => true,

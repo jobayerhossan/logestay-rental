@@ -137,7 +137,7 @@ function logestay_settings_sanitize_payments_bridge($input) {
 	$out['logestay_cash_hours']          = sanitize_text_field($input['logestay_cash_hours'] ?? '');
 
 	// Payment Link
-	$out['logestay_payment_link_note'] = sanitize_textarea_field($input['logestay_payment_link_note'] ?? '');
+	$out['logestay_payment_link_url'] = esc_url_raw($input['logestay_payment_link_url'] ?? '');
 
 	return $out;
 }
@@ -409,11 +409,11 @@ function logestay_register_settings_payments() {
 
 	add_settings_field(
 		'logestay_cash_hours',
-		__('Opening Hours', 'logestay'),
+		__('Horaires', 'logestay'),
 		'logestay_field_text',
 		$page,
 		'logestay_section_cash',
-		['key' => 'logestay_cash_hours', 'placeholder' => 'Mon-Fri: 9am-6pm | Sat: 10am-4pm']
+		['key' => 'logestay_cash_hours', 'placeholder' => 'Du lundi au vendredi : 09:00 – 18:00 | Samedi : 10:00 – 16:00']
 	);
 
 	add_settings_field(
@@ -451,6 +451,19 @@ function logestay_register_settings_payments() {
 		$page,
 		'logestay_section_payment_link',
 		['key' => 'logestay_link_hold_time', 'placeholder' => '24']
+	);
+
+	add_settings_field(
+		'logestay_payment_link_url',
+		__('Lien de paiement / Payment URL', 'logestay'),
+		'logestay_field_url',
+		$page,
+		'logestay_section_payment_link',
+		[
+			'key' => 'logestay_payment_link_url',
+			'placeholder' => 'https://pay.example.com/checkout/booking-123',
+			'description' => __('This exact URL will be sent to guests when Payment Link is selected.', 'logestay'),
+		]
 	);
 
 }
@@ -502,9 +515,19 @@ function logestay_settings_page_payments() {
 	if ( ! current_user_can('manage_options') ) return;
 
 	$page = 'logestay-settings-payments';
+	$link_enabled = (bool) logestay_get_option('logestay_payments_enabled_link', 0);
+	$link_url = trim((string) logestay_get_option('logestay_payment_link_url', ''));
 	?>
 	<div class="wrap logestay-settings-wrap">
 		<h1><?php esc_html_e('LOGE STAY – Payments', 'logestay'); ?></h1>
+
+		<?php if ( $link_enabled && $link_url === '' ) : ?>
+			<div class="notice notice-warning inline">
+				<p>
+					<?php esc_html_e('Payment Link is enabled but no payment URL has been added yet. Guests cannot use this method until a valid URL is saved.', 'logestay'); ?>
+				</p>
+			</div>
+		<?php endif; ?>
 
 		<h2 class="nav-tab-wrapper ls-tabs">
 			<a href="#ls-tab-stripe" class="nav-tab"><?php esc_html_e('Credit Card', 'logestay'); ?></a>

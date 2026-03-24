@@ -1,15 +1,15 @@
 <?php if ( ! defined('ABSPATH') ) exit;
 
-$scenario = [
-  'title' => 'Réservation annulée',
-  'pay_badge'  => ['label'=>'Payé','bg'=>'#D1FAE5','color'=>'#065F46','icon'=>'✅'],
-  'book_badge' => ['label'=>'Annulée','bg'=>'#FEE2E2','color'=>'#991B1B','icon'=>'⛔'],
-  'message' => "Votre réservation a été annulée. Si vous avez effectué un paiement, il vous sera remboursé dans les 5 à 10 jours ouvrés.",
-  'method_label' => 'via paiement en liquide',
-  'method_emoji' => '💳',
-  'cta_primary_label' => 'Contacter le support',
-  'cta_primary_url' => 'mailto:' . ($vars['support_email'] ?? get_option('admin_email')),
-  'show_bank_block' => true,
-];
+$email_title           = 'Réservation annulée';
+$email_status_subtitle = 'Paiement non effectué';
+$email_payment_text    = "La réservation n’a pas été confirmée. Elle a été annulée automatiquement.";
+$email_method_label    = 'Paiement sur place (non confirmé)';
+$email_amount_suffix   = 'Paiement sur place (non confirmé)';
+
+$email_badge_payment = false;
+$email_badge_booking = ['text'=>'Annulée','tone'=>'danger'];
+
+$show_cta        = false;
+$email_body_html = '';
 
 include get_template_directory() . '/inc/emails/templates/layouts/layout-cash.php';

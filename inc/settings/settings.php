@@ -228,6 +228,10 @@ function logestay_field_checkbox( array $args ) {
 
   echo '<label><input type="checkbox" name="logestay_settings[' . esc_attr($key) . ']" value="1" ' . checked($value, true, false) . '> ';
   echo esc_html__('Enabled', 'logestay') . '</label>';
+
+  if ( ! empty($args['description']) ) {
+    echo '<p class="description">' . esc_html($args['description']) . '</p>';
+  }
 }
 
 function logestay_field_email( array $args ) {
@@ -247,6 +251,10 @@ function logestay_field_url( array $args ) {
   $ph    = ! empty($args['placeholder']) ? esc_attr($args['placeholder']) : '';
 
   echo '<input type="url" class="regular-text" name="logestay_settings[' . esc_attr($key) . ']" value="' . $value . '" placeholder="' . $ph . '">';
+
+  if ( ! empty($args['description']) ) {
+    echo '<p class="description">' . esc_html($args['description']) . '</p>';
+  }
 }
 
 function logestay_field_color( array $args ) {
@@ -262,6 +270,10 @@ function logestay_field_text( array $args ) {
   $ph    = ! empty($args['placeholder']) ? esc_attr($args['placeholder']) : '';
 
   echo '<input type="text" class="regular-text" name="logestay_settings[' . esc_attr($key) . ']" value="' . $value . '" placeholder="' . $ph . '">';
+
+  if ( ! empty($args['description']) ) {
+    echo '<p class="description">' . esc_html($args['description']) . '</p>';
+  }
 }
 
 function logestay_field_password( array $args ) {
@@ -343,6 +355,10 @@ function logestay_sanitize_settings( $input ) {
   $set_text('logestay_copyright');
   $set_int('logestay_logo_id');
   $set_int('logestay_email_logo_id');
+  $set_bool('logestay_simple_mode_enabled');
+  $set_bool('logestay_contact_whatsapp_enabled');
+  $set_bool('logestay_contact_phone_enabled');
+  $set_bool('logestay_contact_email_enabled');
 
   if ( isset($input['logestay_default_page_enabled']) ) {
     $out['logestay_default_page_enabled'] = wp_kses_post(
@@ -350,6 +366,22 @@ function logestay_sanitize_settings( $input ) {
     );
   }
   $out['logestay_default_page_enabled'] = ! empty($input['logestay_default_page_enabled']) ? 1 : 0;
+
+  if ( $page === 'general' ) {
+    $general_bool_keys = [
+      'logestay_simple_mode_enabled',
+      'logestay_airbnb_enabled',
+      'logestay_booking_enabled',
+      'logestay_contact_whatsapp_enabled',
+      'logestay_contact_phone_enabled',
+      'logestay_contact_email_enabled',
+      'logestay_default_page_enabled',
+    ];
+
+    foreach ( $general_bool_keys as $k ) {
+      $out[$k] = ! empty($input[$k]) ? 1 : 0;
+    }
+  }
 
   // If you have these on general page too:
   $set_bool('logestay_airbnb_enabled');
@@ -376,8 +408,8 @@ function logestay_sanitize_settings( $input ) {
   $set_text('logestay_credit');
 
   $set_text('logestay_contact_whatsapp');
-  $set_url('logestay_contact_phone');
-  $set_text('logestay_contact_email');
+  $set_text('logestay_contact_phone');
+  $set_email('logestay_contact_email');
 
   if ( isset($input['logestay_maintenance_note']) ) {
     $out['logestay_maintenance_note'] = wp_kses_post(
@@ -458,6 +490,7 @@ function logestay_sanitize_settings( $input ) {
   $set_text('logestay_cash_hours');
   $set_text('logestay_cash_hold_time');
   $set_text('logestay_link_hold_time');
+  $set_url('logestay_payment_link_url');
 
   return $out;
 }

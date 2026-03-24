@@ -4,8 +4,8 @@ $title_h1     = 'Paiement non reçu';
 $details_text = "Nous n'avons pas reçu votre paiement par lien de paiement. Veuillez vérifier ou contacter notre support.";
 $payment_method_label = 'lien de paiement';
 
-$badge_payment = ['text'=>'Non reçu', 'bg'=>'#FEE2E2', 'color'=>'#991B1B', 'icon'=>'⛔'];
-$badge_booking = ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E', 'icon'=>'⏳'];
+$badge_payment = ['text'=>'Non reçu', 'bg'=>'#FEE2E2', 'color'=>'#991B1B'];
+$badge_booking = ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E'];
 
 $show_cta = true;
 $cta_label = 'Contacter le support';

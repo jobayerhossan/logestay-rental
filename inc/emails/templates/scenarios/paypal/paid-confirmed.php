@@ -9,37 +9,37 @@
 </p>
 
 <div style="margin:20px 0;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:20px;">
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">🏠 Logement</div>
-	<div style="margin:0 0 18px;color:#0F172A;font-size:16px;font-weight:700;line-height:1.6;">
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Logement</div>
+	<div style="margin:0 0 14px;color:#0F172A;font-size:16px;font-weight:700;line-height:1.6;">
 		<?php echo esc_html($listing_title); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📍 Adresse</div>
-	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Adresse</div>
+	<div style="margin:0 0 14px;color:#334155;font-size:15px;line-height:1.7;">
 		<?php echo esc_html($property_address ?: $city_name); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📅 Arrivée</div>
-	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
-		<?php echo esc_html($check_in_formatted ?: $check_in); ?> a partir de <?php echo esc_html($checkin_time); ?>
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Arrivée</div>
+	<div style="margin:0 0 14px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($check_in_with_time ?: ($check_in_formatted ?: $check_in)); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">📅 Départ</div>
-	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
-		<?php echo esc_html($check_out_formatted ?: $check_out); ?> avant <?php echo esc_html($checkout_time); ?>
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Départ</div>
+	<div style="margin:0 0 14px;color:#334155;font-size:15px;line-height:1.7;">
+		<?php echo esc_html($check_out_with_time ?: ($check_out_formatted ?: $check_out)); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">👥 Voyageurs</div>
-	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Voyageurs</div>
+	<div style="margin:0 0 14px;color:#334155;font-size:15px;line-height:1.7;">
 		<?php echo esc_html((string) $guest_count); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">💳 Mode de paiement</div>
-	<div style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Mode de paiement</div>
+	<div style="margin:0 0 14px;color:#334155;font-size:15px;line-height:1.7;">
 		<?php echo esc_html($payment_method_label); ?>
 	</div>
 
-	<div style="margin:0 0 14px;font-size:18px;font-weight:800;color:#0F172A;">💰 Montant payé</div>
+	<div style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">Montant payé</div>
 	<div style="margin:0;color:#334155;font-size:15px;font-weight:700;line-height:1.7;">
 		<?php echo esc_html($reservation_price); ?>
 	</div>
@@ -52,9 +52,9 @@
 <?php if ( ! empty($host_phone) ) : ?>
 	<p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.7;">
 		Si vous avez besoin d’aide :<br>
-		📞 <?php echo esc_html($host_phone); ?>
-	</p>
-<?php endif; ?>
+			<?php echo esc_html($host_phone); ?>
+		</p>
+	<?php endif; ?>
 
 <p style="margin:0;color:#111827;font-size:16px;line-height:1.7;">
 	Nous vous souhaitons un excellent séjour.

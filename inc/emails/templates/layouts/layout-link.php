@@ -12,12 +12,13 @@ $payment_method_label = $payment_method_label ?? 'lien de paiement';
 
 // Scenario-driven strings
 $title_h1       = $title_h1 ?? 'Paiement en attente';
+$status_subtitle = $status_subtitle ?? '';
 $details_text   = $details_text ?? 'Un lien de paiement sécurisé vous a été envoyé.';
 $amount_suffix  = $amount_suffix ?? ('via ' . $payment_method_label);
 
 // Badges
-$badge_payment  = $badge_payment ?? ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E', 'icon'=>'⏳'];
-$badge_booking  = $badge_booking ?? ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E', 'icon'=>'⏳'];
+$badge_payment  = ($badge_payment === false) ? false : ($badge_payment ?? ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E']);
+$badge_booking  = ($badge_booking === false) ? false : ($badge_booking ?? ['text'=>'En attente', 'bg'=>'#FEF3C7', 'color'=>'#92400E']);
 
 // Optional CTA + notice
 $show_cta       = isset($show_cta) ? (bool)$show_cta : true;
@@ -35,20 +36,29 @@ $notice_box     = $notice_box ?? null; // ['bg'=>..., 'border'=>..., 'text'=>...
   <?php echo esc_html($title_h1); ?>
 </h2>
 
+<?php if ( $status_subtitle ) : ?>
+  <p style="margin:0 0 14px;color:#64748B;font-size:13px;font-weight:700;line-height:1.5;">
+    <?php echo esc_html($status_subtitle); ?>
+  </p>
+<?php endif; ?>
+
 <div style="margin:14px 0 18px;">
-  <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($badge_payment['bg']); ?>;color:<?php echo esc_attr($badge_payment['color']); ?>;font-weight:700;font-size:12px;margin-right:8px;">
-    <?php echo esc_html($badge_payment['icon'] . ' ' . $badge_payment['text']); ?>
-  </span>
-  <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($badge_booking['bg']); ?>;color:<?php echo esc_attr($badge_booking['color']); ?>;font-weight:700;font-size:12px;">
-    <?php echo esc_html($badge_booking['icon'] . ' ' . $badge_booking['text']); ?>
-  </span>
+  <?php if ( is_array($badge_payment) ) : ?>
+    <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($badge_payment['bg']); ?>;color:<?php echo esc_attr($badge_payment['color']); ?>;font-weight:700;font-size:12px;margin-right:8px;">
+      <?php echo esc_html($badge_payment['text']); ?>
+    </span>
+  <?php endif; ?>
+  <?php if ( is_array($badge_booking) ) : ?>
+    <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:<?php echo esc_attr($badge_booking['bg']); ?>;color:<?php echo esc_attr($badge_booking['color']); ?>;font-weight:700;font-size:12px;">
+      <?php echo esc_html($badge_booking['text']); ?>
+    </span>
+  <?php endif; ?>
 </div>
 
 <!-- Payment details -->
 <div style="background:#F8FAFC;border:1px solid #E5EEF9;border-radius:14px;padding:16px;">
   <div style="display:flex;gap:12px;align-items:flex-start;">
-    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:inline;align-items:center;justify-content:center;font-weight:800;color:#9A3412; line-height:44px; text-align:center;">
-      💳
+    <div style="width:44px;height:44px;border-radius:999px;background:#FFEDD5;display:inline-block;border:1px solid #FDBA74;">
     </div>
     <div style="flex:1;">
       <p style="margin:0 0 4px;font-weight:800;color:#111827;">Détails du paiement</p>
@@ -85,4 +95,3 @@ $notice_box     = $notice_box ?? null; // ['bg'=>..., 'border'=>..., 'text'=>...
     <?php endif; ?>
   </div>
 <?php endif; ?>
-
